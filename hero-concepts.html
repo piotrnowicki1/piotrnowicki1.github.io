@@ -1,0 +1,520 @@
+<meta charset="utf-8">
+<title>Piotr — Portfolio Hero Concepts</title>
+
+<style>
+/* ============ shared ============ */
+:root{
+  --ink:#1c1a14;
+  --mono:"SF Mono","Menlo","Cascadia Code","Consolas",monospace;
+  --body:"Avenir Next","Avenir","Helvetica Neue","Segoe UI",sans-serif;
+  --round:"Arial Rounded MT Bold",ui-rounded,"Verdana Rounded","Trebuchet MS",sans-serif;
+  --serif:"Baskerville","Palatino","Palatino Linotype",Georgia,serif;
+  --geo:"Futura","Avenir Next","Century Gothic","Trebuchet MS",sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--body);color:var(--ink)}
+.hero{min-height:100svh;position:relative;overflow:hidden;display:flex;flex-direction:column}
+.tag{position:absolute;top:22px;left:24px;z-index:5;font-family:var(--mono);font-size:11px;letter-spacing:.14em;display:flex;align-items:center;gap:10px}
+.tag .num{border:1.5px solid currentColor;border-radius:999px;padding:3px 9px}
+a{color:inherit}
+button{font:inherit;cursor:pointer}
+:focus-visible{outline:2.5px solid currentColor;outline-offset:3px}
+
+/* side nav */
+.dots{position:fixed;right:18px;top:50%;transform:translateY(-50%);z-index:50;display:flex;flex-direction:column;gap:12px;mix-blend-mode:difference}
+.dots a{width:9px;height:9px;border-radius:50%;background:#fff;opacity:.55;display:block}
+.dots a:hover{opacity:1;transform:scale(1.3)}
+
+/* ============ 01 · the walk-on ============ */
+.o1{background:#E9EEDC;color:#262E1D;--scenew:min(100vw,1500px)}
+.o1 .tag{color:#4F5C3F}
+.o1-copy{position:relative;z-index:2;padding:clamp(84px,14vh,150px) clamp(24px,7vw,110px) 0;max-width:860px}
+.o1-hej{font-family:var(--mono);font-size:13px;letter-spacing:.18em;color:#8A5B2B;margin:0 0 18px}
+.o1 h1{font-family:var(--round);font-weight:400;font-size:clamp(2.6rem,6.2vw,5.2rem);line-height:1.02;margin:0 0 22px;text-wrap:balance;letter-spacing:-.015em}
+.o1 h1 .rust{color:#C1502E}
+.o1-sub{font-size:clamp(1.02rem,1.5vw,1.22rem);line-height:1.55;max-width:34em;margin:0 0 30px;color:#3B452E}
+.o1-cta{display:flex;gap:14px;flex-wrap:wrap}
+.o1-cta a{text-decoration:none;font-family:var(--round);font-size:1rem;padding:13px 24px;border-radius:999px}
+.o1-cta .solid{background:#C1502E;color:#F5F2E4;box-shadow:0 3px 0 #8F3517}
+.o1-cta .solid:hover{transform:translateY(-2px);box-shadow:0 5px 0 #8F3517}
+.o1-cta .ghost{border:2px solid #262E1D;color:#262E1D}
+.o1-cta .ghost:hover{background:#262E1D;color:#E9EEDC}
+.o1-scene{position:absolute;left:0;right:0;bottom:0;display:flex;justify-content:center;overflow:hidden}
+.o1-scene svg{width:var(--scenew);height:auto;display:block;flex:none}
+.o1-ground{position:absolute;left:0;right:0;bottom:0;height:calc(var(--scenew) * .0584);background:#4F5C3F}
+.o1-hint{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);z-index:3;color:#DDE4CB;font-family:var(--mono);font-size:11px;letter-spacing:.2em}
+@media(max-width:720px){
+  .o1{--scenew:175vw}
+  .o1-copy{padding-top:96px}
+}
+
+/* walk-in machinery — plays whenever the section is in view (.play) */
+.play .slide{animation:walkIn var(--wd,2.8s) linear 1 both}
+@keyframes walkIn{from{transform:translateX(-1080px)}to{transform:translateX(0)}}
+.swingA,.swingB,.trotA,.trotB{transform-box:fill-box;transform-origin:50% 0}
+.play .swingA{animation:swingA var(--wd,2.8s) linear 1}
+.play .swingB{animation:swingB var(--wd,2.8s) linear 1}
+.play .trotA{animation:trotA var(--wd,2.8s) linear 1}
+.play .trotB{animation:trotB var(--wd,2.8s) linear 1}
+@keyframes swingA{0%{transform:rotate(0)}12.5%{transform:rotate(19deg)}37.5%{transform:rotate(-19deg)}62.5%{transform:rotate(19deg)}87.5%{transform:rotate(-19deg)}100%{transform:rotate(0)}}
+@keyframes swingB{0%{transform:rotate(0)}12.5%{transform:rotate(-19deg)}37.5%{transform:rotate(19deg)}62.5%{transform:rotate(-19deg)}87.5%{transform:rotate(19deg)}100%{transform:rotate(0)}}
+@keyframes trotA{0%{transform:rotate(0)}12.5%{transform:rotate(13deg)}37.5%{transform:rotate(-13deg)}62.5%{transform:rotate(13deg)}87.5%{transform:rotate(-13deg)}100%{transform:rotate(0)}}
+@keyframes trotB{0%{transform:rotate(0)}12.5%{transform:rotate(-13deg)}37.5%{transform:rotate(13deg)}62.5%{transform:rotate(-13deg)}87.5%{transform:rotate(13deg)}100%{transform:rotate(0)}}
+.play .bob{animation:bob calc(var(--wd,2.8s)/8) ease-in-out 8 alternate}
+@keyframes bob{from{transform:translateY(0)}to{transform:translateY(-3.5px)}}
+.tailwag{transform-box:fill-box;transform-origin:100% 100%;animation:wag .5s ease-in-out infinite alternate}
+.tailwag.fast{animation-duration:.32s}
+@keyframes wag{from{transform:rotate(-9deg)}to{transform:rotate(13deg)}}
+.steam{animation:steam 2.4s ease-in-out infinite}
+.steam.s2{animation-delay:1.2s}
+@keyframes steam{0%{opacity:0;transform:translateY(3px)}35%{opacity:.5}100%{opacity:0;transform:translateY(-8px)}}
+.cloud{animation:drift 14s ease-in-out infinite alternate}
+.cloud.c2{animation-duration:19s;animation-delay:-6s}
+@keyframes drift{from{transform:translateX(0)}to{transform:translateX(34px)}}
+
+/* ============ 02 · the type specimen ============ */
+.o2{background:#F5F3EC;color:#17150E;justify-content:center}
+.o2 .tag{color:#6E695C}
+.o2-stage{padding:clamp(90px,13vh,140px) clamp(22px,6vw,90px) clamp(120px,16vh,170px)}
+.o2-kicker{font-family:var(--mono);font-size:12px;letter-spacing:.16em;margin:0 0 3.5vh;color:#6E695C}
+.o2 h1{margin:0;font-weight:400}
+.o2 .row{display:block;font-size:clamp(2.3rem,7.4vw,6.6rem);line-height:1.06;white-space:nowrap}
+.o2 .row em{font-family:var(--serif);font-style:italic;font-weight:400;font-size:.62em;letter-spacing:0}
+.o2 .row b,.o2 .row .stkr{display:inline-block;transition:transform .22s cubic-bezier(.34,1.56,.64,1)}
+.o2 .solid{font-family:var(--geo);font-weight:700;letter-spacing:.01em;text-transform:uppercase}
+.o2 .outl{font-family:var(--geo);font-weight:700;text-transform:uppercase;color:transparent;-webkit-text-stroke:2.5px #2A3FD4;letter-spacing:.02em}
+.o2 .hl{font-family:var(--serif);font-style:italic;font-weight:600;background:linear-gradient(104deg,transparent 2%,#EDAF1F 6%,#EDAF1F 94%,transparent 98%);padding:0 .12em}
+.o2 .stkr{font-family:var(--round);font-size:.8em;background:#E0472B;color:#FBF9F3;border-radius:.6em;padding:.02em .3em .06em;transform:rotate(-2.5deg);box-shadow:2.5px 3.5px 0 #17150E}
+.o2 .row b:hover,.o2 .row .stkr:hover{transform:rotate(2deg) scale(1.05)}
+.o2 .ast{color:#E0472B;display:inline-block;animation:spin 9s linear infinite;font-size:.7em;vertical-align:.14em}
+@keyframes spin{to{transform:rotate(360deg)}}
+.o2-stamp{position:absolute;right:clamp(18px,6vw,90px);top:clamp(86px,15vh,150px);font-family:var(--mono);font-size:clamp(.6rem,1.1vw,.8rem);letter-spacing:.1em;color:#E0472B;border:2.5px solid #E0472B;border-radius:10px;padding:10px 14px;transform:rotate(7deg);text-align:center;line-height:1.5;opacity:.85;mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.7' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .9 .12'/%3E%3C/filter%3E%3Crect width='120' height='120' fill='%23fff'/%3E%3Crect width='120' height='120' filter='url(%23g)'/%3E%3C/svg%3E")}
+.o2-marquee{position:absolute;left:0;right:0;bottom:0;border-top:2.5px solid #17150E;background:#17150E;color:#F5F3EC;overflow:hidden;padding:13px 0}
+.o2-track{display:inline-flex;white-space:nowrap;font-family:var(--geo);font-weight:600;font-size:.95rem;letter-spacing:.12em;text-transform:uppercase;animation:mq 26s linear infinite}
+.o2-track span{padding-right:2.2rem}
+.o2-track .y{color:#EDAF1F}
+@keyframes mq{to{transform:translateX(-50%)}}
+@media(max-width:720px){.o2 .row{white-space:normal}.o2-stamp{display:none}}
+
+/* ============ 03 · the desk ============ */
+.o3{background:#24443A;color:#F3EDDE}
+.o3::before{content:"";position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='.055'/%3E%3C/svg%3E");pointer-events:none}
+.o3 .tag{color:#A9C4B4}
+.o3-copy{position:relative;z-index:2;padding:clamp(80px,12vh,130px) clamp(24px,6vw,90px) 0;pointer-events:none}
+.o3 h1{font-family:var(--round);font-weight:400;font-size:clamp(2.3rem,5vw,4.1rem);margin:0 0 14px;letter-spacing:-.01em}
+.o3-sub{max-width:36em;line-height:1.55;color:#C8D8CB;margin:0}
+.o3-sub .hint{color:#EDAF1F;font-family:var(--mono);font-size:.85em;letter-spacing:.06em}
+.o3-board{position:absolute;inset:0;z-index:1}
+.card{position:absolute;touch-action:none;user-select:none;-webkit-user-select:none;cursor:grab;color:#1c1a14;filter:drop-shadow(0 10px 14px rgba(0,0,0,.32));transition:filter .2s}
+.card:active{cursor:grabbing}
+.card.lift{filter:drop-shadow(0 22px 26px rgba(0,0,0,.45))}
+.tape{position:absolute;top:-11px;left:50%;width:74px;height:22px;transform:translateX(-50%) rotate(-2deg);background:rgba(244,240,224,.42);border-left:1px dashed rgba(0,0,0,.12);border-right:1px dashed rgba(0,0,0,.12)}
+.polaroid{width:212px;background:#F6F2E6;padding:10px 10px 12px;transform:rotate(-4deg)}
+.polaroid svg{display:block;width:100%;background:#DCE7DB}
+.polaroid figcaption{font-family:"Bradley Hand","Chalkboard SE","Comic Sans MS",cursive;font-size:.95rem;text-align:center;padding-top:9px}
+.sticky{width:185px;background:#F7DE6E;padding:16px 15px 18px;transform:rotate(3deg);font-family:"Bradley Hand","Chalkboard SE","Comic Sans MS",cursive;font-size:1.02rem;line-height:1.4;box-shadow:inset 0 -26px 24px -26px rgba(0,0,0,.22)}
+.badge{width:196px;background:#F6F2E6;border-radius:12px;padding:0 0 14px;transform:rotate(5deg);overflow:hidden;text-align:center}
+.badge .clip{height:26px;background:#2A3FD4;position:relative}
+.badge .clip::after{content:"";position:absolute;left:50%;top:8px;transform:translateX(-50%);width:34px;height:9px;border-radius:5px;background:#F6F2E6}
+.badge .who{font-family:var(--geo);font-weight:700;font-size:1.25rem;text-transform:uppercase;margin:13px 0 2px}
+.badge .role{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;color:#C1502E}
+.badge .meta{font-size:.72rem;color:#6E695C;margin-top:7px}
+.ticket{width:238px;background:#F6F2E6;border-radius:10px;padding:13px 15px;transform:rotate(-2deg);background-image:radial-gradient(circle at 0 50%,#24443A 7px,transparent 7.5px),radial-gradient(circle at 100% 50%,#24443A 7px,transparent 7.5px)}
+.ticket .rte{display:flex;justify-content:space-between;font-family:var(--geo);font-weight:700;font-size:1.3rem}
+.ticket .rte span:nth-child(2){color:#C1502E}
+.ticket .lbl{font-family:var(--mono);font-size:.6rem;letter-spacing:.14em;color:#6E695C;margin:2px 0 8px}
+.ticket .strip{border-top:2px dashed #C9C2AE;padding-top:8px;font-size:.75rem;line-height:1.45}
+.paw{width:150px;background:#F6F2E6;border-radius:50%;aspect-ratio:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;transform:rotate(-8deg);border:3px dashed #C1502E;text-align:center;padding:16px}
+.paw .ic{font-size:1.5rem;letter-spacing:.1em}
+.paw .tx{font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;line-height:1.5;color:#4a4636}
+.ring{position:absolute;width:92px;height:92px;border-radius:50%;border:11px solid rgba(140,90,40,.28);pointer-events:none;filter:blur(.4px)}
+@media(max-width:860px){.o3-board .card{transform:scale(.82) var(--r,rotate(0))}}
+
+/* ============ 04 · the command line ============ */
+.o4{background:#120E08;color:#E8D5AE;justify-content:center;align-items:center;padding:90px 20px}
+.o4 .tag{color:#8A6A3B}
+.o4::before{content:"";position:absolute;inset:0;background-image:radial-gradient(#2a2013 1px,transparent 1.2px);background-size:26px 26px;opacity:.5;pointer-events:none}
+.term{position:relative;z-index:2;width:min(820px,100%);background:#1A140B;border:1px solid #3a2d17;border-radius:14px;box-shadow:0 0 90px rgba(255,180,84,.13),0 24px 60px rgba(0,0,0,.6);overflow:hidden}
+.term-bar{display:flex;align-items:center;gap:8px;padding:12px 14px;background:#241B0F;border-bottom:1px solid #3a2d17}
+.term-bar i{width:12px;height:12px;border-radius:50%;background:#4a3a20}
+.term-bar i:first-child{background:#E0472B}.term-bar i:nth-child(2){background:#EDAF1F}.term-bar i:nth-child(3){background:#7A9B4E}
+.term-bar span{margin-left:auto;margin-right:auto;font-family:var(--mono);font-size:11.5px;color:#8A6A3B;letter-spacing:.06em}
+.term-body{position:relative;padding:22px 24px 18px;font-family:var(--mono);font-size:clamp(12.5px,1.6vw,14.5px);line-height:1.75;min-height:390px}
+.term-body::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(255,180,84,.03) 0 1px,transparent 1px 3px);pointer-events:none}
+.term-body .ln{white-space:pre-wrap;word-break:break-word}
+.term-body .pr{color:#FFB454;font-weight:700}
+.term-body .cmd{color:#F5E9CE}
+.term-body .out{color:#C7A96E}
+.term-body .dim{color:#8A6A3B}
+.term-body .ok{color:#A6C46A}
+.term-body a{color:#FFB454}
+.cursor{display:inline-block;width:.6em;height:1.12em;background:#FFB454;vertical-align:-.18em;animation:blink 1.05s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.term-keys{display:flex;gap:10px;flex-wrap:wrap;align-items:center;padding:14px 24px 18px;border-top:1px solid #3a2d17;background:#160F08;font-family:var(--mono);font-size:12px;color:#8A6A3B}
+.term-keys button{font-family:var(--mono);font-size:12.5px;color:#FFB454;background:#241B0F;border:1px solid #4a3a20;border-bottom-width:3px;border-radius:8px;padding:7px 14px}
+.term-keys button:hover{background:#2E2212;transform:translateY(-1px)}
+.term-keys button:active{transform:translateY(1px);border-bottom-width:1px}
+
+@media (prefers-reduced-motion: reduce){
+  .slide,.swingA,.swingB,.trotA,.trotB,.bob,.tailwag,.steam,.cloud,.o2-track,.ast,.cursor{animation:none !important}
+  html{scroll-behavior:auto}
+}
+</style>
+
+<nav class="dots" aria-label="Concepts">
+  <a href="#o1" title="01 · The Walk-On"></a>
+  <a href="#o2" title="02 · The Type Specimen"></a>
+  <a href="#o3" title="03 · The Desk"></a>
+  <a href="#o4" title="04 · The Command Line"></a>
+</nav>
+
+<!-- ==================== 01 · THE WALK-ON ==================== -->
+<section class="hero o1 play" id="o1">
+  <div class="tag"><span class="num">01/04</span><span>THE WALK-ON</span></div>
+
+  <div class="o1-copy">
+    <p class="o1-hej">HEJ, I'M PIOTR ☕</p>
+    <h1>I make products<br>people <span class="rust">actually</span> want.</h1>
+    <p class="o1-sub">Chief Product Officer by day. Builder, advisor and interim product
+    guy the rest of the time. The two behind me handle morale — everything else is on me.</p>
+    <div class="o1-cta">
+      <a class="solid" href="#work">See the work</a>
+      <a class="ghost" href="mailto:piotr@shoshin.pm">Say hej</a>
+    </div>
+  </div>
+
+  <div class="o1-ground"></div>
+  <div class="o1-scene" aria-hidden="true">
+    <svg viewBox="0 0 1200 400" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <g id="leg">
+          <rect x="-13" y="0" width="26" height="66" rx="9" fill="#B4B8B3"/>
+          <rect x="-16" y="56" width="32" height="15" rx="6" fill="#A2A6A1"/>
+          <rect x="-8" y="69" width="16" height="11" rx="4" fill="#F0EDE2"/>
+          <path d="M -13 78 h 21 q 15 0 15 10.5 h -36 z" fill="#5E4732"/>
+          <rect x="-6" y="78" width="10" height="5" rx="2" fill="#463424"/>
+          <rect x="-13" y="87" width="36" height="3.5" rx="1.5" fill="#C9A36B"/>
+        </g>
+        <g id="dlegG"><rect x="-5.5" y="0" width="11" height="32" rx="5" fill="#D9A052"/></g>
+        <g id="dlegC"><rect x="-4.5" y="0" width="9" height="26" rx="4" fill="#BB854C"/></g>
+      </defs>
+
+      <!-- sky bits -->
+      <circle cx="1075" cy="80" r="38" fill="#EFCB68"/>
+      <circle cx="1075" cy="80" r="50" fill="none" stroke="#EFCB68" stroke-width="2" stroke-dasharray="3 9" opacity=".7"/>
+      <g class="cloud" fill="#F7F6EC" opacity=".9">
+        <ellipse cx="270" cy="82" rx="46" ry="17"/><ellipse cx="304" cy="70" rx="30" ry="14"/>
+      </g>
+      <g class="cloud c2" fill="#F7F6EC" opacity=".85">
+        <ellipse cx="790" cy="120" rx="38" ry="14"/><ellipse cx="818" cy="110" rx="24" ry="11"/>
+      </g>
+
+      <!-- ground -->
+      <rect x="-200" y="330" width="1600" height="80" fill="#4F5C3F"/>
+      <g stroke="#3E4A31" stroke-width="3" stroke-linecap="round">
+        <path d="M 120 330 q 3 -12 0 -14 M 128 330 q -2 -9 2 -13"/>
+        <path d="M 950 330 q 3 -12 0 -14 M 958 330 q -2 -9 2 -13"/>
+        <path d="M 1130 330 q 3 -11 0 -13"/>
+      </g>
+      <circle cx="205" cy="322" r="5" fill="#EFCB68"/><circle cx="215" cy="326" r="3.5" fill="#F7F6EC"/>
+      <circle cx="1040" cy="324" r="4.5" fill="#C1502E" opacity=".85"/>
+
+      <!-- cocker spaniel -->
+      <g transform="translate(448,330)">
+        <g class="slide" style="--wd:3.6s">
+          <ellipse cx="0" cy="2" rx="42" ry="7" fill="#262E1D" opacity=".12"/>
+          <g transform="translate(-24,-26)"><use href="#dlegC" class="trotA" style="--wd:3.6s"/></g>
+          <g transform="translate(12,-26)"><use href="#dlegC" class="trotA" style="--wd:3.6s"/></g>
+          <g transform="translate(-12,-26)"><use href="#dlegC" class="trotB" style="--wd:3.6s"/></g>
+          <g transform="translate(24,-26)"><use href="#dlegC" class="trotB" style="--wd:3.6s"/></g>
+          <g class="bob" style="--wd:3.6s">
+            <path class="tailwag fast" d="M -34 -46 L -46 -56" stroke="#C79561" stroke-width="8" stroke-linecap="round"/>
+            <ellipse cx="0" cy="-40" rx="37" ry="20" fill="#C79561"/>
+            <circle cx="38" cy="-60" r="16" fill="#C79561"/>
+            <circle cx="33" cy="-74" r="6.5" fill="#D3A876"/>
+            <rect x="48" y="-58" width="17" height="11" rx="5" fill="#DDB587"/>
+            <circle cx="64" cy="-53" r="3.6" fill="#33291F"/>
+            <circle cx="43" cy="-62" r="2.3" fill="#262E1D"/>
+            <path d="M 30 -66 q -11 3 -10 20 q 1 15 9 18 q 7 -3 6 -17 q -1 -15 -5 -21 z" fill="#8F6134"/>
+          </g>
+        </g>
+      </g>
+
+      <!-- golden retriever -->
+      <g transform="translate(578,330)">
+        <g class="slide" style="--wd:3.2s">
+          <ellipse cx="6" cy="2" rx="56" ry="8" fill="#262E1D" opacity=".12"/>
+          <g transform="translate(-34,-34)"><use href="#dlegG" class="trotA" style="--wd:3.2s"/></g>
+          <g transform="translate(20,-34)"><use href="#dlegG" class="trotA" style="--wd:3.2s"/></g>
+          <g transform="translate(-20,-34)"><use href="#dlegG" class="trotB" style="--wd:3.2s"/></g>
+          <g transform="translate(34,-34)"><use href="#dlegG" class="trotB" style="--wd:3.2s"/></g>
+          <g class="bob" style="--wd:3.2s">
+            <path class="tailwag" d="M -46 -58 Q -64 -66 -68 -84" stroke="#DFA75C" stroke-width="10" stroke-linecap="round" fill="none"/>
+            <ellipse cx="0" cy="-52" rx="50" ry="27" fill="#DFA75C"/>
+            <circle cx="54" cy="-82" r="20" fill="#DFA75C"/>
+            <rect x="66" y="-80" width="20" height="13" rx="6" fill="#EBC084"/>
+            <circle cx="85" cy="-75" r="4" fill="#33291F"/>
+            <circle cx="59" cy="-84" r="2.6" fill="#262E1D"/>
+            <rect x="40" y="-90" width="15" height="27" rx="7" fill="#BE8434"/>
+            <rect x="73" y="-68" width="7" height="11" rx="3.5" fill="#E8899B"/>
+            <rect x="40" y="-69" width="17" height="6" rx="3" fill="#C1502E" transform="rotate(-18 48 -66)"/>
+          </g>
+        </g>
+      </g>
+
+      <!-- piotr -->
+      <g transform="translate(760,330)">
+        <g class="slide" style="--wd:2.8s">
+          <ellipse cx="2" cy="2" rx="58" ry="8" fill="#262E1D" opacity=".12"/>
+          <g transform="translate(-11,-90)"><use href="#leg" class="swingA" style="--wd:2.8s"/></g>
+          <g transform="translate(15,-90)"><use href="#leg" class="swingB" style="--wd:2.8s"/></g>
+          <g class="bob" style="--wd:2.8s">
+            <rect x="-47" y="-166" width="11" height="46" rx="3.5" fill="#C3C7CC"/>
+            <circle cx="-41.5" cy="-146" r="3" fill="#F5F6F8" opacity=".85"/>
+            <path d="M -14 -186 C -30 -180 -40 -166 -42 -142" stroke="#3A3E33" stroke-width="13" stroke-linecap="round" fill="none"/>
+            <circle cx="-42" cy="-140" r="6.5" fill="#E5B48E"/>
+            <rect x="-27" y="-200" width="56" height="114" rx="17" fill="#3A3E33"/>
+            <path d="M -14 -128 h 13 M 8 -128 h 13" stroke="#2C3027" stroke-width="2.5" stroke-linecap="round"/>
+            <circle cx="6" cy="-226" r="26" fill="#E5B48E"/>
+            <circle cx="31" cy="-210" r="4.5" fill="#D89E76"/>
+            <circle cx="21" cy="-216" r="2.6" fill="#262E1D"/>
+            <circle cx="5" cy="-210" r="4" fill="#D89E76"/>
+            <path d="M -20 -234 A 26 26 0 0 1 32 -234 Z" fill="#C1502E"/>
+            <rect x="-22" y="-236" width="56" height="11" rx="5" fill="#A8431F"/>
+            <g class="steam"><path d="M 42 -192 q 5 -7 0 -13 q -5 -6 1 -13" stroke="#262E1D" stroke-width="2.5" stroke-linecap="round" fill="none"/></g>
+            <g class="steam s2"><path d="M 51 -190 q 4 -6 0 -11" stroke="#262E1D" stroke-width="2.5" stroke-linecap="round" fill="none"/></g>
+            <path d="M 12 -184 C 30 -180 42 -170 44 -152" stroke="#3A3E33" stroke-width="13" stroke-linecap="round" fill="none"/>
+            <rect x="32" y="-186" width="26" height="7" rx="3" fill="#6B4A32"/>
+            <path d="M 34 -179 L 56 -179 L 53 -148 L 37 -148 Z" fill="#F2EFE7"/>
+            <rect x="35" y="-171" width="20" height="9" fill="#C1502E"/>
+            <circle cx="44" cy="-152" r="7" fill="#E5B48E"/>
+          </g>
+        </g>
+      </g>
+    </svg>
+  </div>
+  <div class="o1-hint">SCROLL ↓ THREE MORE DIRECTIONS</div>
+</section>
+
+<!-- ==================== 02 · THE TYPE SPECIMEN ==================== -->
+<section class="hero o2" id="o2">
+  <div class="tag"><span class="num">02/04</span><span>THE TYPE SPECIMEN</span></div>
+  <div class="o2-stamp">APPROVED FOR<br>SHIPPING<br>— PIOTR, 2026 —</div>
+
+  <div class="o2-stage">
+    <p class="o2-kicker">PIOTR — PRODUCT PERSON · PORTFOLIO, VOL. 1</p>
+    <h1>
+      <span class="row"><em>the</em> <b class="solid">product</b> <em>guy who is</em></span>
+      <span class="row"><b class="outl">CPO</b> <em>by day,</em></span>
+      <span class="row"><b class="hl">builder</b> <em>by nature,</em></span>
+      <span class="row"><span class="stkr">advisor</span> <em>on request</em> <span class="ast">✳</span></span>
+    </h1>
+  </div>
+
+  <div class="o2-marquee" aria-hidden="true">
+    <div class="o2-track">
+      <span>CURRENTLY: CHIEF PRODUCT OFFICER</span><span class="y">✺</span>
+      <span>PREVIOUSLY: PM OF EVERYTHING, EVERYWHERE</span><span class="y">✺</span>
+      <span>SOMETIMES: INTERIM PRODUCT GUY WHEN IT'S ON FIRE</span><span class="y">✺</span>
+      <span>OPEN TO: ADVISING · SIDE QUESTS · GOOD COFFEE</span><span class="y">✺</span>
+      <span>CURRENTLY: CHIEF PRODUCT OFFICER</span><span class="y">✺</span>
+      <span>PREVIOUSLY: PM OF EVERYTHING, EVERYWHERE</span><span class="y">✺</span>
+      <span>SOMETIMES: INTERIM PRODUCT GUY WHEN IT'S ON FIRE</span><span class="y">✺</span>
+      <span>OPEN TO: ADVISING · SIDE QUESTS · GOOD COFFEE</span><span class="y">✺</span>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 03 · THE DESK ==================== -->
+<section class="hero o3" id="o3">
+  <div class="tag"><span class="num">03/04</span><span>THE DESK</span></div>
+
+  <div class="o3-copy">
+    <h1>My desk, unsupervised.</h1>
+    <p class="o3-sub">A career in product, pinned down: leading, building, advising,
+    parachuting in when it's messy. <span class="hint">← drag things around, it's allowed</span></p>
+  </div>
+
+  <div class="o3-board">
+    <div class="ring" style="left:14%;bottom:16%"></div>
+    <div class="ring" style="right:9%;top:24%;transform:scale(.7)"></div>
+
+    <div class="card badge drag" style="left:8%;top:44%">
+      <div class="clip"></div>
+      <div class="who">Piotr</div>
+      <div class="role">CHIEF PRODUCT OFFICER</div>
+      <div class="meta">access: all areas · currently shipping</div>
+    </div>
+
+    <figure class="card polaroid drag" style="left:30%;top:52%;margin:0">
+      <svg viewBox="0 0 190 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect width="190" height="120" fill="#DCE7DB"/>
+        <polyline points="14,98 46,84 74,88 104,58 134,44 172,18" fill="none" stroke="#C1502E" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="172" cy="18" r="6" fill="#C1502E"/>
+        <text x="14" y="24" font-family="Menlo,monospace" font-size="11" fill="#4a6353">0 → 1, six times</text>
+      </svg>
+      <figcaption>things that didn't exist, then did</figcaption>
+    </figure>
+
+    <div class="card sticky drag" style="left:56%;top:38%">
+      <span class="tape"></span>
+      interim product guy —<br>call me when it's messy.
+      <br><b>(it's usually messy)</b>
+    </div>
+
+    <div class="card ticket drag" style="left:66%;top:64%">
+      <div class="rte"><span>YOU</span><span>→</span><span>PMF</span></div>
+      <div class="lbl">ADVISORY BOARDING PASS · GATE 4 · SEAT 1A</div>
+      <div class="strip">early-stage founders &amp; product teams · strategy, hiring, roadmaps · one honest opinion included</div>
+    </div>
+
+    <div class="card paw drag" style="left:47%;top:30%">
+      <div class="ic">🐾 🐾</div>
+      <div class="tx">MORALE DEPT.<br>GOLDEN RETRIEVER +<br>COCKER SPANIEL</div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 04 · THE COMMAND LINE ==================== -->
+<section class="hero o4" id="o4">
+  <div class="tag"><span class="num">04/04</span><span>THE COMMAND LINE</span></div>
+
+  <div class="term">
+    <div class="term-bar"><i></i><i></i><i></i><span>piotr@shoshin — zsh — 80×24</span></div>
+    <div class="term-body" id="tbody" aria-live="polite"></div>
+    <div class="term-keys">
+      <span>try:</span>
+      <button data-cmd="dogs">dogs</button>
+      <button data-cmd="stack">stack</button>
+      <button data-cmd="contact">contact</button>
+    </div>
+  </div>
+</section>
+
+<script>
+/* ---------- 01 · replay the walk-on whenever it scrolls into view ---------- */
+(function(){
+  const o1 = document.getElementById('o1');
+  if(!('IntersectionObserver' in window)) return; /* no IO: keep .play from markup, walk plays on load */
+  o1.classList.remove('play');
+  new IntersectionObserver(function(es){
+    es.forEach(function(e){ o1.classList.toggle('play', e.isIntersecting); });
+  }, {threshold:.25}).observe(o1);
+})();
+
+/* ---------- 03 · drag ---------- */
+(function(){
+  let z = 10;
+  document.querySelectorAll('.drag').forEach(function(el){
+    let sx, sy, ox, oy;
+    el.addEventListener('pointerdown', function(e){
+      e.preventDefault();
+      el.setPointerCapture(e.pointerId);
+      el.classList.add('lift');
+      el.style.zIndex = ++z;
+      sx = e.clientX; sy = e.clientY;
+      ox = parseFloat(el.dataset.x || 0); oy = parseFloat(el.dataset.y || 0);
+    });
+    el.addEventListener('pointermove', function(e){
+      if(!el.hasPointerCapture(e.pointerId)) return;
+      const nx = ox + e.clientX - sx, ny = oy + e.clientY - sy;
+      el.dataset.x = nx; el.dataset.y = ny;
+      el.style.translate = nx + 'px ' + ny + 'px';
+    });
+    ['pointerup','pointercancel'].forEach(function(t){
+      el.addEventListener(t, function(){ el.classList.remove('lift'); });
+    });
+  });
+})();
+
+/* ---------- 04 · terminal ---------- */
+(function(){
+  const body = document.getElementById('tbody');
+  const PROMPT = '<span class="pr">piotr@shoshin</span> <span class="dim">~</span> <span class="pr">%</span> ';
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const intro = [
+    { c: 'whoami',
+      o: ['<span class="out">Piotr — product person. Currently <b>Chief Product Officer</b>.</span>',
+          '<span class="out">Also: builder · advisor · interim product guy · dog chauffeur.</span>'] },
+    { c: 'ls ~/work',
+      o: ['<span class="ok">cpo-gig/</span>          <span class="ok">zero-to-one/</span>      <span class="ok">advisory/</span>',
+          '<span class="ok">interim-rescues/</span>  <span class="ok">side-quests/</span>      <span class="out">README.md</span>'] },
+    { c: 'cat status.txt',
+      o: ['<span class="out">→ open to: advising, interim gigs, interesting conversations</span>',
+          '<span class="out">→ reach me: <a href="mailto:piotr@shoshin.pm">piotr@shoshin.pm</a></span>'] }
+  ];
+
+  const extras = {
+    dogs: ['<span class="out">golden_retriever   status=<span class="ok">VERY_GOOD_BOY</span>   role=head_of_morale</span>',
+           '<span class="out">cocker_spaniel     status=<span class="ok">VERY_GOOD_GIRL</span>  role=chief_nap_officer</span>',
+           '<span class="dim">(they follow me everywhere — see option 01)</span>'],
+    stack: ['<span class="out">figma · linear · cursor · claude code · a suspicious number of spreadsheets</span>',
+            '<span class="dim">plus whatever the team actually needs this quarter</span>'],
+    contact: ['<span class="out">opening mail draft to <a href="mailto:piotr@shoshin.pm">piotr@shoshin.pm</a>…</span>',
+              '<span class="dim">response_time: faster than your last sprint review</span>']
+  };
+
+  function line(html){
+    const d = document.createElement('div');
+    d.className = 'ln'; d.innerHTML = html;
+    body.insertBefore(d, promptLine);
+    return d;
+  }
+  const promptLine = document.createElement('div');
+  promptLine.className = 'ln';
+  body.appendChild(promptLine);
+  function showPrompt(on){
+    promptLine.innerHTML = on ? PROMPT + '<span class="cursor"></span>' : '';
+  }
+
+  function typeCmd(cmd, done){
+    const d = line(PROMPT + '<span class="cmd"></span><span class="cursor"></span>');
+    const span = d.querySelector('.cmd');
+    if(reduced){ span.textContent = cmd; d.querySelector('.cursor').remove(); done(); return; }
+    let i = 0;
+    (function tick(){
+      if(i < cmd.length){ span.textContent += cmd[i++]; setTimeout(tick, 34 + Math.random()*46); }
+      else { d.querySelector('.cursor').remove(); setTimeout(done, 160); }
+    })();
+  }
+  function printOut(lines, done){
+    if(reduced){ lines.forEach(line); done(); return; }
+    let i = 0;
+    (function tick(){
+      if(i < lines.length){ line(lines[i++]); setTimeout(tick, 110); }
+      else setTimeout(done, 300);
+    })();
+  }
+  function run(seq, i, done){
+    if(i >= seq.length){ done(); return; }
+    typeCmd(seq[i].c, function(){ printOut(seq[i].o, function(){ run(seq, i+1, done); }); });
+  }
+
+  let started = false, busy = false;
+  function start(){
+    if(started) return; started = true; busy = true;
+    run(intro, 0, function(){ showPrompt(true); busy = false; });
+  }
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(es, obs){
+      if(es.some(function(e){ return e.isIntersecting; })){ start(); obs.disconnect(); }
+    }, {threshold:.35}).observe(document.getElementById('o4'));
+  } else start();
+
+  document.querySelectorAll('.term-keys button').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      if(busy || !started) return; busy = true;
+      showPrompt(false);
+      const cmd = btn.dataset.cmd;
+      typeCmd(cmd, function(){
+        printOut(extras[cmd], function(){
+          showPrompt(true); busy = false;
+          if(cmd === 'contact') location.href = 'mailto:piotr@shoshin.pm';
+        });
+      });
+    });
+  });
+})();
+</script>

@@ -1,0 +1,865 @@
+<meta charset="utf-8">
+<title>Piotr Nowicki — product guy, CPO by day</title>
+
+<style>
+/* ================= tokens ================= */
+:root{
+  --bg:#E9EEDC;
+  --ink:#262E1D;
+  --ink-soft:#3B452E;
+  --ground:#4F5C3F;
+  --ground-d:#3E4A31;
+  --rust:#C1502E;
+  --rust-d:#8F3517;
+  --mustard:#EDAF1F;
+  --gold:#DFA75C;
+  --cream:#F6F2E6;
+  --cobalt:#2A3FD4;
+  --mono:"SF Mono","Menlo","Cascadia Code","Consolas",monospace;
+  --body:"Avenir Next","Avenir","Helvetica Neue","Segoe UI",sans-serif;
+  --round:"Arial Rounded MT Bold",ui-rounded,"Verdana Rounded","Trebuchet MS",sans-serif;
+  --serif:"Baskerville","Palatino","Palatino Linotype",Georgia,serif;
+  --geo:"Futura","Avenir Next","Century Gothic","Trebuchet MS",sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.55}
+a{color:inherit}
+img,svg{max-width:100%}
+section{scroll-margin-top:92px}
+:focus-visible{outline:2.5px solid var(--rust);outline-offset:3px}
+.wrap{max-width:1200px;margin:0 auto;padding:0 clamp(20px,4.5vw,48px)}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.18em;color:var(--rust);margin:0 0 14px}
+.h2{font-family:var(--round);font-weight:400;font-size:clamp(1.9rem,3.6vw,2.9rem);letter-spacing:-.01em;margin:0 0 10px;text-wrap:balance}
+.lede{color:var(--ink-soft);max-width:38em;margin:0}
+
+/* reveal on scroll */
+.rv{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s cubic-bezier(.22,.9,.3,1)}
+.rv.in{opacity:1;transform:none}
+
+/* ================= nav ================= */
+.nav{position:fixed;top:0;left:0;right:0;z-index:60;display:flex;align-items:center;gap:18px;padding:14px clamp(18px,4vw,42px);background:rgba(233,238,220,.8);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(38,46,29,.09)}
+.nav .mark{font-family:var(--round);font-size:1.15rem;text-decoration:none;letter-spacing:-.01em}
+.nav .mark b{color:var(--rust);font-weight:400}
+.nav nav{margin-left:auto;display:flex;align-items:center;gap:6px}
+.nav nav a{font-family:var(--mono);font-size:12.5px;letter-spacing:.06em;text-decoration:none;padding:8px 12px;border-radius:999px}
+.nav nav a:hover{background:rgba(38,46,29,.08)}
+.nav nav .hej{background:var(--rust);color:var(--cream);box-shadow:0 2px 0 var(--rust-d)}
+.nav nav .hej:hover{background:var(--rust-d)}
+@media(max-width:640px){.nav nav a:not(.hej){display:none}}
+
+/* ================= hero ================= */
+.hero{min-height:100svh;position:relative;overflow:hidden;display:flex;flex-direction:column;--scenew:min(100vw,1500px)}
+.hero-copy{position:relative;z-index:2;padding:clamp(96px,15vh,170px) clamp(20px,5.5vw,80px) 0;max-width:1050px}
+.kicker{font-family:var(--mono);font-size:13px;letter-spacing:.18em;color:#8A5B2B;margin:0 0 20px}
+.hd{margin:0 0 20px;font-weight:400}
+.hd .row{display:block;font-size:clamp(1.9rem,4.9vw,4.3rem);line-height:1.12;white-space:nowrap}
+.hd .row em{font-family:var(--serif);font-style:italic;font-weight:400;font-size:.64em}
+.hd .row>b,.hd .row .adv{display:inline-block;transition:transform .22s cubic-bezier(.34,1.56,.64,1)}
+.hd .prod{font-family:var(--round);font-weight:400;letter-spacing:-.01em}
+.hd .cpo{font-family:var(--geo);font-weight:700;letter-spacing:.02em;color:transparent;-webkit-text-stroke:2.5px var(--cobalt)}
+.hd .bld{font-family:var(--serif);font-style:italic;font-weight:600;background:linear-gradient(104deg,transparent 2%,var(--mustard) 6%,var(--mustard) 94%,transparent 98%);padding:0 .12em}
+.hd .adv{font-family:var(--round);font-size:.82em;background:var(--rust);color:var(--cream);border-radius:.55em;padding:.02em .32em .07em;transform:rotate(-2.5deg);box-shadow:2.5px 3.5px 0 var(--ink)}
+.hd .row>b:hover,.hd .adv:hover{transform:rotate(2deg) scale(1.05)}
+.hd .ast{color:var(--rust);display:inline-block;animation:spin 9s linear infinite;font-size:.62em;vertical-align:.16em}
+@keyframes spin{to{transform:rotate(360deg)}}
+.hero-sub{font-size:clamp(1rem,1.4vw,1.18rem);max-width:33em;margin:0 0 28px;color:var(--ink-soft)}
+.cta{display:flex;gap:14px;flex-wrap:wrap}
+.cta a{text-decoration:none;font-family:var(--round);font-size:1rem;padding:13px 24px;border-radius:999px;transition:transform .18s,box-shadow .18s}
+.cta .solid{background:var(--rust);color:var(--cream);box-shadow:0 3px 0 var(--rust-d)}
+.cta .solid:hover{transform:translateY(-2px);box-shadow:0 5px 0 var(--rust-d)}
+.cta .ghost{border:2px solid var(--ink)}
+.cta .ghost:hover{background:var(--ink);color:var(--bg)}
+.hero-ground{position:absolute;left:0;right:0;bottom:0;height:calc(var(--scenew) * .0584);background:var(--ground)}
+.scene{position:absolute;left:0;right:0;bottom:0;display:flex;justify-content:center;overflow:hidden}
+.scene svg{width:var(--scenew);height:auto;display:block;flex:none}
+@media(max-width:760px){
+  .hero{--scenew:180vw}
+  .hd .row{white-space:normal}
+}
+
+/* walk-in machinery — plays whenever hero is in view (.play) */
+/* story timeline: 0-2.8s piotr walks in · 3s laptop up+open · 4.4s quota toast ·
+   6.25s lid closes · 6.6s laptop yeeted · 7.3s whistle · 8.7s dogs sprint in · 10.6s woof */
+.play .slide{animation:walkIn var(--wd,2.8s) linear var(--wdel,0s) 1 both}
+@keyframes walkIn{from{transform:translateX(-1080px)}to{transform:translateX(0)}}
+.swingA,.swingB,.trotA,.trotB{transform-box:fill-box;transform-origin:50% 0}
+.play .swingA{animation:swingA var(--wd,2.8s) linear 1}
+.play .swingB{animation:swingB var(--wd,2.8s) linear 1}
+.play .trotA{animation:trotA var(--wd,2.8s) linear var(--wdel,0s) 1}
+.play .trotB{animation:trotB var(--wd,2.8s) linear var(--wdel,0s) 1}
+@keyframes swingA{0%{transform:rotate(0)}12.5%{transform:rotate(19deg)}37.5%{transform:rotate(-19deg)}62.5%{transform:rotate(19deg)}87.5%{transform:rotate(-19deg)}100%{transform:rotate(0)}}
+@keyframes swingB{0%{transform:rotate(0)}12.5%{transform:rotate(-19deg)}37.5%{transform:rotate(19deg)}62.5%{transform:rotate(-19deg)}87.5%{transform:rotate(19deg)}100%{transform:rotate(0)}}
+@keyframes trotA{0%{transform:rotate(0)}12.5%{transform:rotate(13deg)}37.5%{transform:rotate(-13deg)}62.5%{transform:rotate(13deg)}87.5%{transform:rotate(-13deg)}100%{transform:rotate(0)}}
+@keyframes trotB{0%{transform:rotate(0)}12.5%{transform:rotate(-13deg)}37.5%{transform:rotate(13deg)}62.5%{transform:rotate(-13deg)}87.5%{transform:rotate(13deg)}100%{transform:rotate(0)}}
+.play .bob{animation:bob calc(var(--wd,2.8s)/8) ease-in-out var(--wdel,0s) 8 alternate}
+@keyframes bob{from{transform:translateY(0)}to{transform:translateY(-3.5px)}}
+.tailwag{transform-box:fill-box;transform-origin:100% 100%;animation:wag .5s ease-in-out infinite alternate}
+.tailwag.fast{animation-duration:.32s}
+@keyframes wag{from{transform:rotate(-9deg)}to{transform:rotate(13deg)}}
+.earflop{transform-box:fill-box;transform-origin:50% 8%;animation:flop 1.15s ease-in-out infinite alternate}
+@keyframes flop{from{transform:rotate(-4deg)}to{transform:rotate(5deg)}}
+.eye{transform-box:fill-box;transform-origin:50% 50%;animation:blinky 4.4s linear infinite}
+.eye.e2{animation-delay:1.3s}.eye.e3{animation-delay:2.5s}
+@keyframes blinky{0%,93.5%,100%{transform:scaleY(1)}96%{transform:scaleY(.12)}}
+.steam{animation:steam 2.4s ease-in-out infinite}
+.steam.s2{animation-delay:1.2s}
+@keyframes steam{0%{opacity:0;transform:translateY(3px)}35%{opacity:.5}100%{opacity:0;transform:translateY(-8px)}}
+.cloud{animation:drift 14s ease-in-out infinite alternate}
+.cloud.c2{animation-duration:19s;animation-delay:-6s}
+@keyframes drift{from{transform:translateX(0)}to{transform:translateX(34px)}}
+.rays{transform-box:fill-box;transform-origin:50% 50%;animation:spin 46s linear infinite}
+.birds{animation:fly 30s linear infinite}
+@keyframes fly{from{transform:translateX(-160px)}to{transform:translateX(1400px)}}
+.woof{opacity:0;transform-box:fill-box;transform-origin:20% 100%}
+.play .woof{animation:woofpop .55s cubic-bezier(.34,1.56,.64,1) 10.6s forwards}
+@keyframes woofpop{from{opacity:0;transform:scale(.5)}to{opacity:1;transform:scale(1)}}
+
+/* the laptop bit */
+.lapOpen,.armUp,.scrUI,.scrBan,.toast,.flyLap,.note,.wmouth{opacity:0}
+@keyframes appear{to{opacity:1}}
+@keyframes fadeAway{to{opacity:0}}
+.play .lapClosed{animation:fadeAway .22s linear 3s forwards}
+.play .armBack{animation:fadeAway .22s linear 3s forwards,appear .25s linear 6.6s forwards}
+.play .armUp{animation:appear .25s linear 3.05s forwards,fadeAway .18s linear 6.6s forwards}
+.play .lapOpen{animation:appear .25s linear 3.05s forwards,fadeAway .18s linear 6.6s forwards}
+.lid{transform-box:fill-box;transform-origin:50% 100%}
+.play .lid{animation:lidOpen .45s cubic-bezier(.22,.9,.3,1.2) 3.3s both,lidClose .3s ease-in 6.25s forwards}
+@keyframes lidOpen{from{transform:scaleY(.06)}to{transform:scaleY(1)}}
+@keyframes lidClose{to{transform:scaleY(.06)}}
+.play .scrUI{animation:appear .3s linear 3.95s forwards}
+.scrBan{transform-box:fill-box}
+.play .scrBan{animation:banIn .4s cubic-bezier(.34,1.56,.64,1) 4.45s forwards}
+@keyframes banIn{from{opacity:0;transform:translateY(-9px)}to{opacity:1;transform:translateY(0)}}
+.toast{transform-box:fill-box;transform-origin:50% 100%}
+.play .toast{animation:toastLife 1.9s ease 4.4s forwards}
+@keyframes toastLife{0%{opacity:0;transform:scale(.6)}12%{opacity:1;transform:scale(1.06)}20%{transform:scale(1)}82%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(.9)}}
+.flyLap{transform-box:fill-box;transform-origin:center}
+.play .flyLap{animation:yeet .85s cubic-bezier(.35,-.1,.7,.8) 6.6s forwards}
+@keyframes yeet{0%{opacity:1;transform:translate(0,0) rotate(0deg)}100%{opacity:1;transform:translate(-680px,-540px) rotate(-780deg)}}
+.pflip{transform-box:fill-box;transform-origin:50% 50%}
+.play .pflip{animation:turnAround .35s ease-in-out 7.05s forwards}
+@keyframes turnAround{0%{transform:scaleX(1)}50%{transform:scaleX(.08)}100%{transform:scaleX(-1)}}
+.play .wmouth{animation:appear .15s linear 7.5s forwards,fadeAway .2s linear 9.5s forwards}
+.play .note{animation:noteFly 1.15s ease-out var(--nd,7.55s) 2}
+@keyframes noteFly{0%{opacity:0;transform:translate(0,0)}25%{opacity:1}100%{opacity:0;transform:translate(var(--nx,26px),-36px)}}
+
+/* ================= marquee ================= */
+.marquee{border-top:2.5px solid var(--ink);border-bottom:2.5px solid var(--ink);background:var(--ink);color:var(--bg);overflow:hidden;padding:13px 0}
+.marquee .track{display:inline-flex;white-space:nowrap;font-family:var(--geo);font-weight:600;font-size:.92rem;letter-spacing:.12em;text-transform:uppercase;animation:mq 28s linear infinite}
+.marquee .track span{padding-right:2.2rem}
+.marquee .track .y{color:var(--mustard)}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* ================= bento menu ================= */
+.menu{padding:clamp(70px,10vh,120px) 0 30px}
+.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:18px;margin-top:38px}
+.tile{position:relative;display:flex;flex-direction:column;justify-content:flex-end;gap:6px;min-height:250px;padding:26px;border-radius:30px;background:var(--cream);border:1px solid rgba(38,46,29,.08);box-shadow:0 2px 6px rgba(38,46,29,.06);text-decoration:none;overflow:hidden;transition:transform .22s cubic-bezier(.22,.9,.3,1),box-shadow .22s}
+.tile:hover{transform:translateY(-5px) rotate(-.35deg);box-shadow:0 18px 34px rgba(38,46,29,.14)}
+.tile .t-eyebrow{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;color:var(--rust)}
+.tile h3{font-family:var(--round);font-weight:400;font-size:clamp(1.3rem,2vw,1.7rem);margin:0;letter-spacing:-.01em}
+.tile p{margin:0;font-size:.92rem;color:var(--ink-soft);max-width:30em}
+.tile .go{position:absolute;top:18px;right:18px;width:38px;height:38px;border-radius:50%;border:1.5px solid rgba(38,46,29,.25);display:grid;place-items:center;font-size:1rem;transition:transform .22s,background .22s,color .22s}
+.tile:hover .go{background:var(--ink);color:var(--cream);transform:rotate(45deg)}
+.tile .art{margin-bottom:auto;padding-bottom:14px}
+.t-career{grid-column:span 7}
+.t-side{grid-column:span 5}
+.t-edu{grid-column:span 4;background:var(--ink);color:var(--bg)}
+.t-edu p{color:#B9C3A8}
+.t-edu .t-eyebrow{color:var(--mustard)}
+.t-edu .go{border-color:rgba(233,238,220,.35)}
+.t-edu:hover .go{background:var(--cream);color:var(--ink)}
+.t-adv{grid-column:span 4}
+.t-fire{grid-column:span 4;background:var(--mustard)}
+.t-fire .t-eyebrow{color:var(--rust-d)}
+.t-fire p{color:#5c4708}
+.t-dogs{grid-column:span 5}
+.t-hej{grid-column:span 7;background:var(--rust);color:var(--cream)}
+.t-hej .t-eyebrow{color:var(--mustard)}
+.t-hej p{color:#F3D9CC}
+.t-hej .go{border-color:rgba(246,242,230,.4)}
+.t-hej:hover .go{background:var(--cream);color:var(--rust)}
+.icon-row{display:flex;gap:12px}
+.icon-row .app{width:56px;height:56px;border-radius:15px;display:grid;place-items:center;box-shadow:inset 0 -3px 0 rgba(0,0,0,.14)}
+@media(max-width:1020px){.t-career,.t-side,.t-edu,.t-adv,.t-fire,.t-dogs,.t-hej{grid-column:span 6}}
+@media(max-width:680px){.t-career,.t-side,.t-edu,.t-adv,.t-fire,.t-dogs,.t-hej{grid-column:span 12}.tile{min-height:210px}}
+
+/* ================= sections ================= */
+.sect{padding:clamp(70px,10vh,120px) 0}
+.sect.alt{background:var(--cream)}
+
+/* career timeline */
+.tl{list-style:none;margin:44px 0 0;padding:0;border-left:2.5px solid rgba(38,46,29,.18)}
+.tl li{position:relative;padding:0 0 34px 32px;max-width:46em}
+.tl li::before{content:"";position:absolute;left:-8px;top:6px;width:13px;height:13px;border-radius:50%;background:var(--rust);border:3px solid var(--bg)}
+.tl li:last-child{padding-bottom:0}
+.tl .when{font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;color:#8A5B2B}
+.tl h3{font-family:var(--round);font-weight:400;font-size:1.35rem;margin:6px 0 4px}
+.tl h3 small{font-family:var(--serif);font-style:italic;font-size:.78em;color:var(--ink-soft)}
+.tl p{margin:0;color:var(--ink-soft);font-size:.98rem}
+.cv-note{margin-top:30px;font-family:var(--mono);font-size:12.5px;color:#8A5B2B}
+.cv-note a{color:var(--rust)}
+
+/* side projects */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:40px}
+.pcard{background:var(--bg);border:1px solid rgba(38,46,29,.1);border-radius:24px;padding:24px;display:flex;flex-direction:column;gap:10px}
+.pcard .app{width:58px;height:58px;border-radius:15px;display:grid;place-items:center;box-shadow:inset 0 -3px 0 rgba(0,0,0,.14)}
+.pcard h3{font-family:var(--round);font-weight:400;font-size:1.25rem;margin:6px 0 0}
+.pcard p{margin:0;font-size:.93rem;color:var(--ink-soft)}
+.pcard .st{margin-top:auto;padding-top:10px;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;color:var(--rust)}
+@media(max-width:860px){.cards{grid-template-columns:1fr}}
+
+/* education */
+.edu-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(24px,4vw,60px);align-items:start;margin-top:8px}
+.edu-list{list-style:none;margin:34px 0 0;padding:0;display:flex;flex-direction:column;gap:18px}
+.edu-list li{display:flex;gap:16px;align-items:flex-start;max-width:36em}
+.edu-list .dot{flex:none;width:34px;height:34px;border-radius:10px;background:var(--mustard);display:grid;place-items:center;font-family:var(--round);font-size:.95rem;box-shadow:inset 0 -2.5px 0 rgba(0,0,0,.16)}
+.edu-list b{font-family:var(--round);font-weight:400;display:block}
+.edu-list span{font-size:.93rem;color:var(--ink-soft)}
+.board{background:var(--ink);border-radius:26px;padding:30px;color:var(--bg);border:8px solid #6B4A32;box-shadow:0 12px 28px rgba(38,46,29,.18)}
+.board .chalk{font-family:"Chalkboard SE","Bradley Hand","Comic Sans MS",cursive;font-size:1.35rem;line-height:1.6}
+.board .chalk u{text-decoration-color:var(--mustard);text-decoration-thickness:3px;text-underline-offset:6px}
+.board .sig{font-family:var(--mono);font-size:11px;color:#B9C3A8;margin-top:22px;letter-spacing:.14em}
+@media(max-width:860px){.edu-grid{grid-template-columns:1fr}}
+
+/* advisory / interim */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:40px}
+.duo .box{border-radius:28px;padding:30px;display:flex;flex-direction:column;gap:10px}
+.duo .a{background:var(--bg);border:1px solid rgba(38,46,29,.1)}
+.duo .b{background:var(--mustard)}
+.duo h3{font-family:var(--round);font-weight:400;font-size:1.5rem;margin:0}
+.duo .mode{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;color:var(--rust)}
+.duo .b .mode{color:var(--rust-d)}
+.duo p{margin:0;color:var(--ink-soft);font-size:.97rem}
+.duo .b p{color:#5c4708}
+.duo ul{margin:6px 0 0;padding-left:1.15em;font-size:.93rem;color:var(--ink-soft)}
+.duo .b ul{color:#5c4708}
+.duo .tagline{margin-top:auto;padding-top:16px;font-family:"Chalkboard SE","Bradley Hand","Comic Sans MS",cursive;font-size:1.05rem}
+.duo .clients{margin-top:8px;font-family:var(--mono);font-size:10px;letter-spacing:.1em;color:#8A5B2B;line-height:1.7}
+.tenets{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px}
+.tenets span{font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;border:1.5px solid rgba(38,46,29,.3);border-radius:999px;padding:8px 15px;color:var(--ink-soft)}
+.nos{margin-top:30px;font-family:var(--mono);font-size:12px;line-height:1.9;color:var(--ink-soft);max-width:62em}
+.nos b{color:var(--rust);letter-spacing:.12em}
+@media(max-width:860px){.duo{grid-template-columns:1fr}}
+
+/* testimonials */
+.quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:40px}
+.qcard{margin:0;background:var(--cream);border:1px solid rgba(38,46,29,.08);border-radius:26px;padding:28px;display:flex;flex-direction:column;gap:16px}
+.qcard p{margin:0;font-family:var(--serif);font-style:italic;font-size:1.06rem;line-height:1.62}
+.qcard .who{margin-top:auto;font-family:var(--mono);font-size:10px;letter-spacing:.12em;color:#8A5B2B;line-height:1.7}
+@media(max-width:860px){.quotes{grid-template-columns:1fr}}
+
+/* ================= footer ================= */
+.footer{background:var(--ink);color:var(--bg);padding:clamp(80px,12vh,140px) 0 0;position:relative;overflow:hidden}
+.footer .big{font-family:var(--round);font-weight:400;font-size:clamp(3rem,9vw,7.5rem);letter-spacing:-.02em;margin:0 0 18px;line-height:1}
+.footer .big .dot{color:var(--rust)}
+.footer .sub{color:#B9C3A8;max-width:34em;margin:0 0 30px}
+.footer .mailbtn{display:inline-block;font-family:var(--round);font-size:1.1rem;text-decoration:none;background:var(--mustard);color:var(--ink);padding:16px 30px;border-radius:999px;box-shadow:0 4px 0 #B98908;transition:transform .18s,box-shadow .18s}
+.footer .mailbtn:hover{transform:translateY(-2px);box-shadow:0 6px 0 #B98908}
+.paws{display:block;width:100%;margin-top:clamp(50px,8vh,90px);opacity:.5}
+.fineprint{border-top:1px solid rgba(233,238,220,.15);margin-top:0;padding:20px clamp(20px,4.5vw,48px);display:flex;gap:16px;flex-wrap:wrap;justify-content:space-between;font-family:var(--mono);font-size:11.5px;color:#8f9a7e;letter-spacing:.06em}
+
+@media (prefers-reduced-motion: reduce){
+  .slide,.swingA,.swingB,.trotA,.trotB,.bob,.tailwag,.earflop,.eye,.steam,.cloud,.rays,.birds,.track,.ast,
+  .lapClosed,.armBack,.armUp,.lapOpen,.lid,.scrUI,.scrBan,.toast,.flyLap,.note,.wmouth,.pflip{animation:none !important}
+  .play .slide{animation:none !important}
+  .woof{opacity:1}
+  .rv{opacity:1;transform:none;transition:none}
+  html{scroll-behavior:auto}
+}
+</style>
+
+<!-- ================= NAV ================= -->
+<header class="nav">
+  <a class="mark" href="#top">piotr<b>.</b></a>
+  <nav>
+    <a href="#menu">menu</a>
+    <a href="#career">career</a>
+    <a href="#side">side projects</a>
+    <a href="#education">education</a>
+    <a href="#advisory">advisory</a>
+    <a class="hej" href="mailto:piotr@shoshin.pm">say hey</a>
+  </nav>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero play" id="top">
+  <div class="hero-copy">
+    <p class="kicker">HEY, I'M PIOTR ☕</p>
+    <h1 class="hd">
+      <span class="row"><em>the</em> <b class="prod">product</b> <em>guy who is</em></span>
+      <span class="row"><b class="cpo">CPO</b> <em>by day,</em></span>
+      <span class="row"><b class="bld">builder</b> <em>by nature,</em></span>
+      <span class="row"><span class="adv">advisor</span> <em>on request</em> <span class="ast">✳</span></span>
+    </h1>
+    <p class="hero-sub">Chief Product Officer at Team Internet Group, founder of Shoshin.pm,
+    and a builder since the day an Excel macro planned a tire factory's production for me.
+    The two behind me are in charge of morale — everything else is on me.</p>
+    <div class="cta">
+      <a class="solid" href="#menu">Pick a door ↓</a>
+      <a class="ghost" href="mailto:piotr@shoshin.pm">Say hey</a>
+    </div>
+  </div>
+
+  <div class="hero-ground"></div>
+  <div class="scene" aria-hidden="true">
+    <svg viewBox="0 0 1200 400" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <g id="leg">
+          <rect x="-13" y="0" width="26" height="66" rx="9" fill="#B4B8B3"/>
+          <rect x="-16" y="56" width="32" height="15" rx="6" fill="#A2A6A1"/>
+          <rect x="-8" y="69" width="16" height="11" rx="4" fill="#F0EDE2"/>
+          <path d="M -13 78 h 21 q 15 0 15 10.5 h -36 z" fill="#5E4732"/>
+          <rect x="-6" y="78" width="10" height="5" rx="2" fill="#463424"/>
+          <rect x="-13" y="87" width="36" height="3.5" rx="1.5" fill="#C9A36B"/>
+        </g>
+        <g id="dlegG"><rect x="-5.5" y="0" width="11" height="32" rx="5" fill="#D9A052"/></g>
+        <g id="dlegC"><rect x="-4.5" y="0" width="9" height="26" rx="4" fill="#BB854C"/></g>
+        <g id="paw" fill="currentColor">
+          <ellipse cx="0" cy="4" rx="7" ry="5.5"/>
+          <circle cx="-7" cy="-4" r="2.8"/><circle cx="-2.4" cy="-7" r="2.8"/>
+          <circle cx="2.4" cy="-7" r="2.8"/><circle cx="7" cy="-4" r="2.8"/>
+        </g>
+      </defs>
+
+      <!-- sky -->
+      <g>
+        <circle cx="1075" cy="80" r="38" fill="#EFCB68"/>
+        <circle class="rays" cx="1075" cy="80" r="52" fill="none" stroke="#EFCB68" stroke-width="2.5" stroke-dasharray="4 12" opacity=".8"/>
+      </g>
+      <g class="cloud" fill="#F7F6EC" opacity=".9">
+        <ellipse cx="290" cy="74" rx="46" ry="17"/><ellipse cx="324" cy="62" rx="30" ry="14"/>
+      </g>
+      <g class="cloud c2" fill="#F7F6EC" opacity=".85">
+        <ellipse cx="820" cy="118" rx="38" ry="14"/><ellipse cx="848" cy="108" rx="24" ry="11"/>
+      </g>
+      <g class="birds" stroke="#262E1D" stroke-width="2.5" fill="none" stroke-linecap="round" opacity=".75">
+        <path d="M 0 96 q 7 -8 14 0 q 7 -8 14 0"/>
+        <path d="M 44 78 q 6 -7 12 0 q 6 -7 12 0"/>
+      </g>
+
+      <!-- tree -->
+      <g transform="translate(860,0)">
+        <rect x="124" y="244" width="15" height="90" rx="6" fill="#7A5B3A"/>
+        <path d="M 131 268 q -18 -8 -26 -22" stroke="#7A5B3A" stroke-width="9" stroke-linecap="round" fill="none"/>
+        <circle cx="104" cy="222" r="40" fill="#5E7048"/>
+        <circle cx="152" cy="216" r="45" fill="#6B7D52"/>
+        <circle cx="128" cy="184" r="41" fill="#5E7048"/>
+        <circle cx="94" cy="196" r="9" fill="#EFCB68" opacity=".85"/>
+        <circle cx="158" cy="190" r="7" fill="#C1502E" opacity=".8"/>
+      </g>
+
+      <!-- ground -->
+      <rect x="-200" y="330" width="1600" height="80" fill="#4F5C3F"/>
+      <g stroke="#3E4A31" stroke-width="3" stroke-linecap="round">
+        <path d="M 220 330 q 3 -12 0 -14 M 228 330 q -2 -9 2 -13"/>
+        <path d="M 950 330 q 3 -12 0 -14 M 958 330 q -2 -9 2 -13"/>
+        <path d="M 1130 330 q 3 -11 0 -13"/>
+        <path d="M 330 330 q 2 -10 -1 -12"/>
+      </g>
+      <g>
+        <ellipse cx="1128" cy="318" rx="34" ry="20" fill="#5E7048"/>
+        <ellipse cx="1160" cy="322" rx="24" ry="14" fill="#6B7D52"/>
+      </g>
+      <circle cx="285" cy="322" r="5" fill="#EFCB68"/><circle cx="296" cy="326" r="3.5" fill="#F7F6EC"/>
+      <circle cx="1040" cy="324" r="4.5" fill="#C1502E" opacity=".85"/>
+
+      <!-- cocker spaniel -->
+      <g transform="translate(448,330)" style="--wd:1.75s;--wdel:8.85s">
+        <g class="slide">
+          <ellipse cx="0" cy="2" rx="42" ry="7" fill="#262E1D" opacity=".12"/>
+          <g transform="translate(-24,-26)"><use href="#dlegC" class="trotA"/></g>
+          <g transform="translate(12,-26)"><use href="#dlegC" class="trotA"/></g>
+          <g transform="translate(-12,-26)"><use href="#dlegC" class="trotB"/></g>
+          <g transform="translate(24,-26)"><use href="#dlegC" class="trotB"/></g>
+          <g class="bob">
+            <path class="tailwag fast" d="M -34 -46 L -46 -56" stroke="#C79561" stroke-width="8" stroke-linecap="round"/>
+            <ellipse cx="0" cy="-40" rx="37" ry="20" fill="#C79561"/>
+            <circle cx="38" cy="-60" r="16" fill="#C79561"/>
+            <circle cx="33" cy="-74" r="6.5" fill="#D3A876"/>
+            <rect x="48" y="-58" width="17" height="11" rx="5" fill="#DDB587"/>
+            <circle cx="64" cy="-53" r="3.6" fill="#33291F"/>
+            <circle class="eye e2" cx="43" cy="-62" r="2.3" fill="#262E1D"/>
+            <path class="earflop" d="M 30 -66 q -11 3 -10 20 q 1 15 9 18 q 7 -3 6 -17 q -1 -15 -5 -21 z" fill="#8F6134"/>
+          </g>
+        </g>
+      </g>
+
+      <!-- golden retriever -->
+      <g transform="translate(578,330)" style="--wd:1.5s;--wdel:8.7s">
+        <g class="slide">
+          <ellipse cx="6" cy="2" rx="56" ry="8" fill="#262E1D" opacity=".12"/>
+          <g transform="translate(-34,-34)"><use href="#dlegG" class="trotA"/></g>
+          <g transform="translate(20,-34)"><use href="#dlegG" class="trotA"/></g>
+          <g transform="translate(-20,-34)"><use href="#dlegG" class="trotB"/></g>
+          <g transform="translate(34,-34)"><use href="#dlegG" class="trotB"/></g>
+          <g class="bob">
+            <path class="tailwag" d="M -46 -58 Q -64 -66 -68 -84" stroke="#DFA75C" stroke-width="10" stroke-linecap="round" fill="none"/>
+            <ellipse cx="0" cy="-52" rx="50" ry="27" fill="#DFA75C"/>
+            <circle cx="54" cy="-82" r="20" fill="#DFA75C"/>
+            <rect x="66" y="-80" width="20" height="13" rx="6" fill="#EBC084"/>
+            <circle cx="85" cy="-75" r="4" fill="#33291F"/>
+            <circle class="eye e3" cx="59" cy="-84" r="2.6" fill="#262E1D"/>
+            <rect class="earflop" x="40" y="-90" width="15" height="27" rx="7" fill="#BE8434"/>
+            <rect x="73" y="-68" width="7" height="11" rx="3.5" fill="#E8899B"/>
+            <rect x="40" y="-69" width="17" height="6" rx="3" fill="#C1502E" transform="rotate(-18 48 -66)"/>
+            <g class="woof">
+              <rect x="30" y="-142" width="76" height="32" rx="11" fill="#F6F2E6" stroke="#262E1D" stroke-width="2"/>
+              <path d="M 50 -111 l -6 12 l 14 -11 z" fill="#F6F2E6" stroke="#262E1D" stroke-width="2" stroke-linejoin="round"/>
+              <text x="68" y="-120" text-anchor="middle" font-family="Menlo,monospace" font-size="15" fill="#262E1D">woof!</text>
+            </g>
+          </g>
+        </g>
+      </g>
+
+      <!-- piotr -->
+      <g transform="translate(760,330)">
+        <g class="slide" style="--wd:2.8s">
+          <g class="pflip">
+            <rect x="-62" y="-290" width="128" height="292" fill="none"/>
+            <ellipse cx="2" cy="2" rx="58" ry="8" fill="#262E1D" opacity=".12"/>
+            <g transform="translate(-11,-90)"><use href="#leg" class="swingA" style="--wd:2.8s"/></g>
+            <g transform="translate(15,-90)"><use href="#leg" class="swingB" style="--wd:2.8s"/></g>
+            <g class="bob" style="--wd:2.8s">
+              <g class="lapClosed">
+                <rect x="-47" y="-166" width="11" height="46" rx="3.5" fill="#C3C7CC"/>
+                <circle cx="-41.5" cy="-146" r="3" fill="#F5F6F8" opacity=".85"/>
+              </g>
+              <g class="armBack">
+                <path d="M -14 -186 C -30 -180 -40 -166 -42 -142" stroke="#3A3E33" stroke-width="13" stroke-linecap="round" fill="none"/>
+                <circle cx="-42" cy="-140" r="6.5" fill="#E5B48E"/>
+              </g>
+              <g class="armUp">
+                <path d="M -14 -186 C -22 -166 8 -150 46 -147" stroke="#3A3E33" stroke-width="13" stroke-linecap="round" fill="none"/>
+                <circle cx="50" cy="-145" r="6.5" fill="#E5B48E"/>
+              </g>
+              <rect x="-27" y="-200" width="56" height="114" rx="17" fill="#3A3E33"/>
+              <path d="M -14 -128 h 13 M 8 -128 h 13" stroke="#2C3027" stroke-width="2.5" stroke-linecap="round"/>
+              <circle cx="6" cy="-226" r="26" fill="#E5B48E"/>
+              <circle cx="31" cy="-210" r="4.5" fill="#D89E76"/>
+              <circle class="eye" cx="21" cy="-216" r="2.6" fill="#262E1D"/>
+              <circle cx="5" cy="-210" r="4" fill="#D89E76"/>
+              <path d="M -20 -234 A 26 26 0 0 1 32 -234 Z" fill="#C1502E"/>
+              <rect x="-22" y="-236" width="56" height="11" rx="5" fill="#A8431F"/>
+              <circle class="wmouth" cx="28.5" cy="-200" r="2.6" fill="#8A5F42"/>
+              <g class="steam"><path d="M 42 -192 q 5 -7 0 -13 q -5 -6 1 -13" stroke="#262E1D" stroke-width="2.5" stroke-linecap="round" fill="none"/></g>
+              <g class="steam s2"><path d="M 51 -190 q 4 -6 0 -11" stroke="#262E1D" stroke-width="2.5" stroke-linecap="round" fill="none"/></g>
+              <path d="M 12 -184 C 30 -180 42 -170 44 -152" stroke="#3A3E33" stroke-width="13" stroke-linecap="round" fill="none"/>
+              <rect x="32" y="-186" width="26" height="7" rx="3" fill="#6B4A32"/>
+              <path d="M 34 -179 L 56 -179 L 53 -148 L 37 -148 Z" fill="#F2EFE7"/>
+              <rect x="35" y="-171" width="20" height="9" fill="#C1502E"/>
+              <circle cx="44" cy="-152" r="7" fill="#E5B48E"/>
+            </g>
+          </g>
+          <text class="note" style="--nd:7.55s;--nx:-26px" x="-58" y="-222" font-family="Menlo,monospace" font-size="15" fill="#262E1D">♪</text>
+          <text class="note" style="--nd:7.9s;--nx:-26px" x="-70" y="-232" font-family="Menlo,monospace" font-size="13" fill="#262E1D">♫</text>
+          <text class="note" style="--nd:8.25s;--nx:-26px" x="-50" y="-212" font-family="Menlo,monospace" font-size="12" fill="#262E1D">♪</text>
+          <g class="lapOpen">
+            <rect x="50" y="-150" width="66" height="8" rx="3" fill="#B9BDC4"/>
+            <g class="lid">
+              <rect x="53" y="-196" width="60" height="46" rx="4" fill="#3A3E33"/>
+              <rect x="56.5" y="-192.5" width="53" height="36" rx="2" fill="#F6F2E6"/>
+              <g class="scrUI">
+                <text x="83" y="-168" text-anchor="middle" font-family="Menlo,monospace" font-size="15" fill="#C1502E">✳</text>
+              </g>
+              <g class="scrBan">
+                <rect x="76" y="-191" width="34" height="11" rx="2.5" fill="#FFFFFF" stroke="rgba(38,46,29,.3)"/>
+                <circle cx="81" cy="-185.5" r="2" fill="#C1502E"/>
+                <rect x="85" y="-188.5" width="19" height="2" rx="1" fill="#9A958A"/>
+                <rect x="85" y="-184.5" width="13" height="2" rx="1" fill="#C5C0B2"/>
+              </g>
+            </g>
+          </g>
+          <g class="flyLap">
+            <rect x="55" y="-172" width="46" height="9" rx="3.5" fill="#C3C7CC"/>
+            <circle cx="78" cy="-167.5" r="2.5" fill="#F5F6F8"/>
+          </g>
+          <g class="toast">
+            <rect x="35" y="-274" width="210" height="48" rx="12" fill="#FFFDF6" stroke="#262E1D" stroke-width="2"/>
+            <rect x="47" y="-264" width="28" height="28" rx="7" fill="#C1502E"/>
+            <text x="61" y="-244.5" text-anchor="middle" font-family="Menlo,monospace" font-size="16" fill="#F6F2E6">✳</text>
+            <text x="83" y="-253" font-family="Menlo,monospace" font-size="11.5" font-weight="700" fill="#262E1D">Claude</text>
+            <text x="83" y="-238" font-family="Avenir Next,Helvetica,sans-serif" font-size="10.5" fill="#6B6555">You&#8217;ve hit your usage limit.</text>
+          </g>
+        </g>
+      </g>
+    </svg>
+  </div>
+</section>
+
+<!-- ================= MARQUEE ================= -->
+<div class="marquee" aria-hidden="true">
+  <div class="track">
+    <span>CURRENTLY: CPO @ TEAM INTERNET GROUP</span><span class="y">✺</span>
+    <span>ALSO: FOUNDER @ SHOSHIN.PM</span><span class="y">✺</span>
+    <span>BUILDING: A PRODUCT POSTGRAD @ COLLEGIUM DA VINCI</span><span class="y">✺</span>
+    <span>PREVIOUSLY: HOUSECALL PRO · DELIVERY HERO · RAMP NETWORK</span><span class="y">✺</span>
+    <span>CURRENTLY: CPO @ TEAM INTERNET GROUP</span><span class="y">✺</span>
+    <span>ALSO: FOUNDER @ SHOSHIN.PM</span><span class="y">✺</span>
+    <span>BUILDING: A PRODUCT POSTGRAD @ COLLEGIUM DA VINCI</span><span class="y">✺</span>
+    <span>PREVIOUSLY: HOUSECALL PRO · DELIVERY HERO · RAMP NETWORK</span><span class="y">✺</span>
+  </div>
+</div>
+
+<!-- ================= BENTO MENU ================= -->
+<section class="menu" id="menu">
+  <div class="wrap">
+    <p class="eyebrow rv">THE MENU</p>
+    <h2 class="h2 rv">Pick a door.</h2>
+    <p class="lede rv">Everything I do, behind seven rounded rectangles.</p>
+
+    <div class="grid">
+      <a class="tile t-career rv" href="#career">
+        <span class="go">↗</span>
+        <div class="art">
+          <svg viewBox="0 0 320 110" width="320" height="110" aria-hidden="true">
+            <polyline points="16,92 110,74 205,44 292,16" fill="none" stroke="#C1502E" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="16" cy="92" r="7" fill="#DFA75C"/>
+            <circle cx="110" cy="74" r="7" fill="#DFA75C"/>
+            <circle cx="205" cy="44" r="7" fill="#DFA75C"/>
+            <circle cx="292" cy="16" r="9" fill="#C1502E"/>
+            <text x="16" y="110" font-family="Menlo,monospace" font-size="11" fill="#8A5B2B" text-anchor="middle">PM</text>
+            <text x="205" y="66" font-family="Menlo,monospace" font-size="11" fill="#8A5B2B" text-anchor="middle">HoP</text>
+            <text x="292" y="38" font-family="Menlo,monospace" font-size="11" fill="#C1502E" text-anchor="middle">CPO</text>
+          </svg>
+        </div>
+        <span class="t-eyebrow">THE CAREER</span>
+        <h3>Warehouse to C-suite</h3>
+        <p>Production planner → PM → Head of Product → CPO. Housecall Pro, Delivery Hero, Ramp Network, now Team Internet Group. The full road, with potholes.</p>
+      </a>
+
+      <a class="tile t-side rv" href="#side">
+        <span class="go">↗</span>
+        <div class="art icon-row" aria-hidden="true">
+          <span class="app" style="background:#DFA75C">
+            <svg viewBox="0 0 24 24" width="28" height="28"><polyline points="4,17 10,11 14,14 20,6" fill="none" stroke="#262E1D" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          <span class="app" style="background:#C1502E">
+            <svg viewBox="0 0 24 24" width="28" height="28"><path d="M5 5 h14 v10 h-8 l-5 4 v-4 h-1 z" fill="none" stroke="#F6F2E6" stroke-width="2.4" stroke-linejoin="round"/></svg>
+          </span>
+          <span class="app" style="background:#262E1D">
+            <svg viewBox="0 0 24 24" width="28" height="28"><path d="M13 3 L6 14 h5 l-1 7 l8 -11 h-5 z" fill="#EDAF1F"/></svg>
+          </span>
+          <span class="app" style="background:#EDAF1F">
+            <svg viewBox="0 0 26 26" width="28" height="28"><g fill="#262E1D"><ellipse cx="13" cy="16" rx="5.5" ry="4.5"/><circle cx="7.5" cy="10" r="2.2"/><circle cx="11" cy="7.6" r="2.2"/><circle cx="15" cy="7.6" r="2.2"/><circle cx="18.5" cy="10" r="2.2"/></g></svg>
+          </span>
+        </div>
+        <span class="t-eyebrow">SIDE PROJECTS</span>
+        <h3>Things I ship before standup</h3>
+        <p>Reality Check and LiftNotes — small products built deep in the Claude ecosystem, because the itch doesn't respect job titles.</p>
+      </a>
+
+      <a class="tile t-edu rv" href="#education">
+        <span class="go">↗</span>
+        <div class="art" aria-hidden="true">
+          <svg viewBox="0 0 90 60" width="90" height="60">
+            <path d="M 45 8 L 84 24 L 45 40 L 6 24 Z" fill="#EDAF1F"/>
+            <path d="M 45 40 L 45 52" stroke="#EDAF1F" stroke-width="3" stroke-linecap="round"/>
+            <path d="M 66 32 v 14" stroke="#F6F2E6" stroke-width="3" stroke-linecap="round"/>
+            <circle cx="66" cy="50" r="4" fill="#F6F2E6"/>
+          </svg>
+        </div>
+        <span class="t-eyebrow">EDUCATION</span>
+        <h3>I teach product people</h3>
+        <p>Building a hands-on product postgrad at Collegium Da Vinci — lecturing there since 2019.</p>
+      </a>
+
+      <a class="tile t-adv rv" href="#advisory">
+        <span class="go">↗</span>
+        <div class="art" aria-hidden="true">
+          <svg viewBox="0 0 170 60" width="170" height="60">
+            <rect x="2" y="4" width="166" height="52" rx="10" fill="#E9EEDC" stroke="rgba(38,46,29,.2)"/>
+            <text x="16" y="34" font-family="Futura,Avenir Next,sans-serif" font-weight="700" font-size="19" fill="#262E1D">YOU</text>
+            <text x="74" y="34" font-family="Futura,Avenir Next,sans-serif" font-weight="700" font-size="19" fill="#C1502E">→</text>
+            <text x="102" y="34" font-family="Futura,Avenir Next,sans-serif" font-weight="700" font-size="19" fill="#262E1D">PMF</text>
+            <text x="16" y="48" font-family="Menlo,monospace" font-size="7.5" fill="#8A5B2B" letter-spacing="1">BOARDING PASS · GATE 4 · SEAT 1A</text>
+          </svg>
+        </div>
+        <span class="t-eyebrow">ADVISORY</span>
+        <h3>Shoshin.pm</h3>
+        <p>Strategy workshops that stay for execution. Allegro, Kuźniar Media, Valueships and friends.</p>
+      </a>
+
+      <a class="tile t-fire rv" href="#advisory">
+        <span class="go">↗</span>
+        <div class="art" aria-hidden="true">
+          <svg viewBox="0 0 60 66" width="56" height="62">
+            <path d="M 30 4 C 38 16 48 24 48 40 A 18 18 0 0 1 12 40 C 12 30 18 24 22 16 C 24 24 28 26 30 24 C 32 20 30 12 30 4 Z" fill="#C1502E"/>
+            <path d="M 30 34 C 34 40 38 42 38 48 A 8.5 8.5 0 0 1 21 48 C 21 42 27 40 30 34 Z" fill="#EDAF1F"/>
+          </svg>
+        </div>
+        <span class="t-eyebrow">INTERIM</span>
+        <h3>Call me when it's messy</h3>
+        <p>Interim product leadership — most recently Olly Olly: agency → SaaS, zero → 1,000 paying customers.</p>
+      </a>
+
+      <a class="tile t-dogs rv" href="#hej">
+        <span class="go">↗</span>
+        <div class="art" style="color:#C1502E" aria-hidden="true">
+          <svg viewBox="0 0 200 44" width="200" height="44">
+            <use href="#paw" transform="translate(14,22) rotate(-14)"/>
+            <use href="#paw" transform="translate(58,14) rotate(10) scale(.8)"/>
+            <use href="#paw" transform="translate(100,26) rotate(-8)"/>
+            <use href="#paw" transform="translate(144,14) rotate(12) scale(.8)"/>
+            <use href="#paw" transform="translate(184,24) rotate(-10) scale(.9)"/>
+          </svg>
+        </div>
+        <span class="t-eyebrow">THE MORALE DEPT.</span>
+        <h3>One golden, one cocker</h3>
+        <p>Heads of wellbeing. They attend every 1:1 held on a walk. There's also a cat — she declined the role.</p>
+      </a>
+
+      <a class="tile t-hej rv" href="mailto:piotr@shoshin.pm">
+        <span class="go">↗</span>
+        <span class="t-eyebrow">SAY HEY</span>
+        <h3>piotr@shoshin.pm</h3>
+        <p>Recruiting, collaborating, or just walking your dog past my inbox — all valid reasons.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CAREER ================= -->
+<section class="sect" id="career">
+  <div class="wrap">
+    <p class="eyebrow rv">01 · THE CAREER</p>
+    <h2 class="h2 rv">The road so far.</h2>
+    <p class="lede rv">Every step taught me a different altitude of the same job: make the thing people need, then make the org that makes the thing.</p>
+
+    <ol class="tl">
+      <li class="rv">
+        <span class="when">MAR 2024 — NOW</span>
+        <h3>Chief Product Officer <small>— Team Internet Group (Commerce Media Tech)</small></h3>
+        <p>Ad-tech SaaS: Voluum &amp; Zeropark. Cut 45 scattered initiatives down to 4 core rebuilds and 6 strategic bets, set the group's market positioning, and led its product and AI transformation — while still shipping experimental products myself, on principle.</p>
+      </li>
+      <li class="rv">
+        <span class="when">JAN 2023 — MAR 2024</span>
+        <h3>Head of Product Management <small>— same company, the fix-the-foundations chapter</small></h3>
+        <p>Turned feature factories into teams that own outcomes: product triads, a real user-research culture, separate strategies for both products. Time-to-value down 60%, team eNPS from 20 to 54 — and a promotion to CPO after 14 months.</p>
+      </li>
+      <li class="rv">
+        <span class="when">2023 — NOW</span>
+        <h3>Founder <small>— Shoshin.pm</small></h3>
+        <p>Strategy consultancy run by practitioners who still practice. Workshops that end in decisions, then execution support — for Allegro, Betfan, Kuźniar Media, Valueships, Rohlig SUUS Logistics.</p>
+      </li>
+      <li class="rv">
+        <span class="when">JAN — AUG 2024</span>
+        <h3>Interim Head of Product <small>— Olly Olly, Charlotte NC (remote)</small></h3>
+        <p>The parachute gig: pivoted a marketing agency into a SaaS for US home-service pros. Shipped v1, got the first 1,000 paying customers, built the activation engine, handed over.</p>
+      </li>
+      <li class="rv">
+        <span class="when">JUL 2022 — JAN 2023</span>
+        <h3>Senior PM / Product Practice Lead <small>— Ramp Network, London</small></h3>
+        <p>Clarified the B2B2C Partners strategy into two product lines and shipped the Partners Portal from zero: retention up 12%, issue-resolution time cut ~5×. Led the product-practice transformation on the side.</p>
+      </li>
+      <li class="rv">
+        <span class="when">JUN 2021 — JUL 2022</span>
+        <h3>Product Manager <small>— Housecall Pro, San Diego</small></h3>
+        <p>Owned the calendar — where users spend 90% of their time. Built the area's 3-year strategy, cut lost jobs 6% for the key segment, and sold everyone on an engine rebuild with zero "immediate value" that unlocked everything after. First PM in Poland; hired 3 PMs and 2 designers.</p>
+      </li>
+      <li class="rv">
+        <span class="when">SEP 2020 — JUN 2021</span>
+        <h3>Product Manager <small>— Delivery Hero (via Netguru)</small></h3>
+        <p>Innovation arm of the world's biggest food delivery (2M daily users). White-label groceries engine built in a month, live in Talabat and Hungerstation in two, 20% of early restaurant customers converted to grocery delivery.</p>
+      </li>
+      <li class="rv">
+        <span class="when">MAR 2018 — SEP 2020</span>
+        <h3>Project / Product Manager <small>— Netguru</small></h3>
+        <p>Co-built Netguru's product management practice. Click &amp; collect for Żabka, a US insurtech, a Berlin catering app — alongside the future founder of Gorillas.</p>
+      </li>
+      <li class="rv">
+        <span class="when">ORIGIN STORY</span>
+        <h3>Production planner <small>— roller blinds, then tires</small></h3>
+        <p>Started in the warehouse, got moved to planning, then built an Excel macro that planned the entire production line for me — components, forecasts, output. That was the day I realised I don't want to plan products. I want to build them.</p>
+      </li>
+    </ol>
+    <p class="cv-note rv">→ the long version, with every number sourced: <a href="mailto:piotr@shoshin.pm?subject=CV%20please">ask for it</a></p>
+  </div>
+</section>
+
+<!-- ================= SIDE PROJECTS ================= -->
+<section class="sect alt" id="side">
+  <div class="wrap">
+    <p class="eyebrow rv">02 · SIDE PROJECTS</p>
+    <h2 class="h2 rv">Things I ship before standup.</h2>
+    <p class="lede rv">Deep in the Claude ecosystem, always an experiment or two running. The current cast:</p>
+
+    <div class="cards">
+      <div class="pcard rv">
+        <span class="app" style="background:#DFA75C">
+          <svg viewBox="0 0 24 24" width="30" height="30"><polyline points="4,17 10,11 14,14 20,6" fill="none" stroke="#262E1D" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+        <h3>Reality Check</h3>
+        <p>Your calendar says you're free. Your nervous system disagrees. Reality Check shows how loaded the coming weekends actually are — so you know whether to answer the kayaking invite with "of course!" or "how about mid-July?"</p>
+        <span class="st">STATUS: SHIPPING · SAVING MY WEEKENDS</span>
+      </div>
+      <div class="pcard rv">
+        <span class="app" style="background:#C1502E">
+          <svg viewBox="0 0 24 24" width="30" height="30"><g fill="#F6F2E6"><rect x="2.5" y="8" width="4" height="8" rx="1.5"/><rect x="17.5" y="8" width="4" height="8" rx="1.5"/><rect x="6.5" y="10.5" width="11" height="3" rx="1.5"/></g></svg>
+        </span>
+        <h3>LiftNotes</h3>
+        <p>One shared space for a personal trainer and the person they coach — training plans, progress, and the small wins that get lost between gym sessions.</p>
+        <span class="st">STATUS: IN THE GYM · REPS: COUNTING</span>
+      </div>
+      <div class="pcard rv">
+        <span class="app" style="background:#EDAF1F">
+          <svg viewBox="0 0 24 24" width="30" height="30"><path d="M13 3 L6 14 h5 l-1 7 l8 -11 h-5 z" fill="#262E1D"/></svg>
+        </span>
+        <h3>The next one</h3>
+        <p>Always brewing. Built fast, validated faster — the same way I tell companies to do it, just with more coffee and two dogs supervising.</p>
+        <span class="st">STATUS: BREWING · ETA: ONE WEEKEND</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= EDUCATION ================= -->
+<section class="sect" id="education">
+  <div class="wrap">
+    <p class="eyebrow rv">03 · EDUCATION</p>
+    <h2 class="h2 rv">I teach product people.</h2>
+    <p class="lede rv">Education always mattered to me — but too many programs are theory taught by people who left the field. I'm building the antidote.</p>
+
+    <div class="edu-grid">
+      <div>
+        <ul class="edu-list">
+          <li class="rv"><span class="dot">NEW</span><div><b>Budowanie Produktów Cyfrowych — postgraduate program</b><span>A hands-on postgrad I'm building end-to-end at Collegium Da Vinci in Poznań: how to build good digital products and ship them with AI — solo, if you have to. You leave with things you built, not "nice knowledge". <a href="https://cdv.pl/podyplomowe/marketing-i-technologie/budowanie-produktow-cyfrowych/">See the program →</a></span></div></li>
+          <li class="rv"><span class="dot">🎓</span><div><b>Lecturer, Collegium Da Vinci · 2019–2022</b><span>Taught effective communication in remote teams on the IT Project Management program.</span></div></li>
+          <li class="rv"><span class="dot">W</span><div><b>Strategy workshops</b><span>Via Shoshin.pm — rooms full of sticky notes, honest diagnoses and hard trade-offs. Details one door down.</span></div></li>
+        </ul>
+      </div>
+      <div class="board rv">
+        <p class="chalk">"Interesting lecture" is a failing grade.<br>"I actually <u>built</u> something" — that's a pass.</p>
+        <p class="chalk" style="font-size:1rem;margin-top:14px">— the whole idea behind the program</p>
+        <p class="sig">APPLICATIONS → <a href="https://cdv.pl/podyplomowe/marketing-i-technologie/budowanie-produktow-cyfrowych/" style="color:var(--mustard)">CDV.PL</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ADVISORY / INTERIM ================= -->
+<section class="sect alt" id="advisory">
+  <div class="wrap">
+    <p class="eyebrow rv">04 · WORK WITH ME</p>
+    <h2 class="h2 rv">Two ways in.</h2>
+    <p class="lede rv">Beyond the day job, there are exactly two doors — pick by how much is on fire. Either way, the same beliefs apply:</p>
+    <div class="tenets rv" aria-label="Strategy tenets">
+      <span>strategy is what you say no to</span>
+      <span>diagnosis before roadmap</span>
+      <span>a living process, not a document</span>
+      <span>focus is a value in itself</span>
+    </div>
+
+    <div class="duo">
+      <div class="box a rv">
+        <span class="mode">WORKSHOPS + EXECUTION · SHOSHIN.PM</span>
+        <h3>Strategy, done with you</h3>
+        <p>A consultancy run by practitioners who still practice. We don't hand you a deck and leave — we facilitate your answer with your people, then stay to execute it.</p>
+        <ul>
+          <li><b>strategy scoping</b> — diagnose where you actually stand</li>
+          <li><b>strategy stack</b> — make the hard choices, together</li>
+          <li><b>execution</b> — we implement it with you, in practice</li>
+        </ul>
+        <p class="clients">ALLEGRO · BETFAN · KUŹNIAR MEDIA · VALUESHIPS · ROHLIG SUUS</p>
+        <p class="tagline">honest, allergic to slideware. <a href="https://www.shoshin.pm/">shoshin.pm →</a></p>
+      </div>
+      <div class="box b rv">
+        <span class="mode">EMBEDDED · FRACTIONAL / INTERIM</span>
+        <h3>Interim product lead</h3>
+        <p>Your Head of Product left, the roadmap is a rumour, and the board meeting is in three weeks. I parachute in.</p>
+        <ul>
+          <li>stabilise the team and the plan</li>
+          <li>restart discovery and shipping</li>
+          <li>hire my own replacement, hand over, leave</li>
+        </ul>
+        <p class="clients">DONE AT: OLLY OLLY (AGENCY → SAAS, FIRST 1,000 PAYING) · RAMP NETWORK</p>
+        <p class="tagline">call me when it's messy.</p>
+      </div>
+    </div>
+
+    <p class="nos rv"><b>THE CONSCIOUS NO'S →</b> no roles where the strategy is fixed and I'm just there to execute · no slides-and-leave consulting · no organisations that don't want to be challenged · no micromanagement cultures</p>
+  </div>
+</section>
+
+<!-- ================= TESTIMONIALS ================= -->
+<section class="sect" id="words">
+  <div class="wrap">
+    <p class="eyebrow rv">05 · SECOND OPINIONS</p>
+    <h2 class="h2 rv">Don't take my word for it.</h2>
+
+    <div class="quotes">
+      <figure class="qcard rv">
+        <p>"A very down-to-earth CPO. What truly sets Piotr apart is his ability to balance high-level vision with pragmatic execution — empowering individuals to take ownership, always ready to support without micromanaging."</p>
+        <figcaption class="who">REUBEN — PRODUCT MANAGER,<br>REPORTED TO PIOTR AT COMMERCE MEDIA TECH</figcaption>
+      </figure>
+      <figure class="qcard rv">
+        <p>"I like their style — organised, professional, assertive, sharing knowledge in a way that's light but effective. They work a bit like therapists you resent for only asking questions. But asking is a craft."</p>
+        <figcaption class="who">JAROSŁAW KUŹNIAR — JOURNALIST, FOUNDER OF VOICE HOUSE,<br>ON WORKING WITH SHOSHIN.PM (TRANSLATED)</figcaption>
+      </figure>
+      <figure class="qcard rv">
+        <p>"An astute product manager with an indisputable talent for setting his team up for success. He never shied away from reaching out to users through every channel he could find — and is never afraid to question the status quo."</p>
+        <figcaption class="who">PRODUCT DESIGNER — SQUAD-MATE<br>AT HOUSECALL PRO</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer" id="hej">
+  <div class="wrap">
+    <p class="eyebrow rv" style="color:var(--mustard)">SAY HEY</p>
+    <h2 class="big rv">Let's walk<span class="dot">.</span></h2>
+    <p class="sub rv">Hiring a CPO, need an interim product lead, planning a strategy workshop — or just want to argue about roadmaps over specialty coffee. My inbox is open and the dogs don't bite.</p>
+    <a class="mailbtn rv" href="mailto:piotr@shoshin.pm">piotr@shoshin.pm →</a>
+  </div>
+  <svg class="paws" viewBox="0 0 1200 60" aria-hidden="true" style="color:#8f9a7e">
+    <use href="#paw" transform="translate(60,36) rotate(-12)"/>
+    <use href="#paw" transform="translate(180,22) rotate(8) scale(.8)"/>
+    <use href="#paw" transform="translate(300,40) rotate(-6)"/>
+    <use href="#paw" transform="translate(430,20) rotate(14) scale(.8)"/>
+    <use href="#paw" transform="translate(560,38) rotate(-10)"/>
+    <use href="#paw" transform="translate(690,22) rotate(6) scale(.8)"/>
+    <use href="#paw" transform="translate(820,40) rotate(-14)"/>
+    <use href="#paw" transform="translate(950,24) rotate(10) scale(.8)"/>
+    <use href="#paw" transform="translate(1080,38) rotate(-8)"/>
+  </svg>
+  <div class="fineprint">
+    <span>© 2026 PIOTR NOWICKI · FUELED BY SPECIALTY COFFEE</span>
+    <span>OFF DUTY: CROSSFIT · COOKING · WOODWORKING · MISSING AUSTRALIA</span>
+    <span>SUPERVISED BY MY DOGS AND WIFE</span>
+  </div>
+</footer>
+
+<script>
+/* replay the hero walk-on whenever it scrolls into view */
+(function(){
+  const hero = document.querySelector('.hero');
+  if(!('IntersectionObserver' in window)) return; /* no IO: .play stays from markup */
+  hero.classList.remove('play');
+  new IntersectionObserver(function(es){
+    es.forEach(function(e){ hero.classList.toggle('play', e.isIntersecting); });
+  }, {threshold:.25}).observe(hero);
+})();
+
+/* reveal-on-scroll — with fail-safes so content can never stay hidden */
+(function(){
+  const els = document.querySelectorAll('.rv');
+  function showAll(){ els.forEach(function(el){ el.classList.add('in'); }); }
+  if(!('IntersectionObserver' in window)
+     || matchMedia('(prefers-reduced-motion: reduce)').matches
+     || document.hidden){ showAll(); return; }
+  let fired = false;
+  const io = new IntersectionObserver(function(es){
+    fired = true;
+    es.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, {threshold:.12, rootMargin:'0px 0px -40px 0px'});
+  els.forEach(function(el, i){
+    el.style.transitionDelay = (i % 4) * 70 + 'ms';
+    io.observe(el);
+  });
+  /* if rendering is throttled and the observer never delivers, reveal everything */
+  setTimeout(function(){ if(!fired) showAll(); }, 4000);
+})();
+</script>
