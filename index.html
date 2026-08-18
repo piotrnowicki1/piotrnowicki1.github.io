@@ -1,6 +1,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Piotr Nowicki — product guy, CPO by day</title>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<title>Piotr Nowicki - product guy</title>
 
 <style>
 /* ================= tokens ================= */
@@ -175,15 +176,16 @@ section{scroll-margin-top:92px}
 .t-fire .t-eyebrow{color:var(--rust-d)}
 .t-fire p{color:#5c4708}
 .t-dogs{grid-column:span 5}
-.t-hej{grid-column:span 7;background:var(--rust);color:var(--cream)}
+.t-podcast{grid-column:span 7}
+.t-hej{grid-column:span 12;background:var(--rust);color:var(--cream)}
 .t-hej .t-eyebrow{color:var(--mustard)}
 .t-hej p{color:#F3D9CC}
 .t-hej .go{border-color:rgba(246,242,230,.4)}
 .t-hej:hover .go{background:var(--cream);color:var(--rust)}
 .icon-row{display:flex;gap:12px}
 .icon-row .app{width:56px;height:56px;border-radius:15px;display:grid;place-items:center;box-shadow:inset 0 -3px 0 rgba(0,0,0,.14)}
-@media(max-width:1020px){.t-career,.t-side,.t-edu,.t-adv,.t-fire,.t-dogs,.t-hej{grid-column:span 6}}
-@media(max-width:680px){.t-career,.t-side,.t-edu,.t-adv,.t-fire,.t-dogs,.t-hej{grid-column:span 12}.tile{min-height:210px}
+@media(max-width:1020px){.t-career,.t-side,.t-edu,.t-adv,.t-fire,.t-dogs,.t-podcast,.t-hej{grid-column:span 6}}
+@media(max-width:680px){.t-career,.t-side,.t-edu,.t-adv,.t-fire,.t-dogs,.t-podcast,.t-hej{grid-column:span 12}.tile{min-height:210px}
   .t-career .art svg{max-width:235px}}
 
 /* ================= sections ================= */
@@ -226,25 +228,22 @@ section{scroll-margin-top:92px}
 .board .sig{font-family:var(--mono);font-size:11px;color:#B9C3A8;margin-top:22px;letter-spacing:.14em}
 @media(max-width:860px){.edu-grid{grid-template-columns:1fr}}
 
-/* advisory / interim */
-.duo{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:40px}
-.duo .box{border-radius:28px;padding:30px;display:flex;flex-direction:column;gap:10px}
-.duo .a{background:var(--bg);border:1px solid rgba(38,46,29,.1)}
-.duo .b{background:var(--mustard)}
-.duo h3{font-family:var(--round);font-weight:400;font-size:1.5rem;margin:0}
-.duo .mode{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;color:var(--rust)}
-.duo .b .mode{color:var(--rust-d)}
-.duo p{margin:0;color:var(--ink-soft);font-size:.97rem}
-.duo .b p{color:#5c4708}
-.duo ul{margin:6px 0 0;padding-left:1.15em;font-size:.93rem;color:var(--ink-soft)}
-.duo .b ul{color:#5c4708}
-.duo .tagline{margin-top:auto;padding-top:16px;font-family:"Chalkboard SE","Bradley Hand","Comic Sans MS",cursive;font-size:1.05rem}
-.duo .clients{margin-top:8px;font-family:var(--mono);font-size:10px;letter-spacing:.1em;color:#8A5B2B;line-height:1.7}
+/* advisory / interim — one combined box */
+.workbox{margin-top:40px;background:var(--bg);border:1px solid rgba(38,46,29,.12);border-radius:28px;padding:clamp(24px,3.5vw,40px);display:grid;grid-template-columns:1fr 1fr;gap:clamp(22px,4vw,48px)}
+.wb-col{display:flex;flex-direction:column;gap:9px}
+.wb-col:first-child{padding-right:clamp(22px,4vw,48px);border-right:1px solid rgba(38,46,29,.14)}
+.wb-col .mode{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;color:var(--rust)}
+.wb-col>b{font-family:var(--round);font-weight:400;font-size:1.35rem}
+.wb-col p{margin:0;color:var(--ink-soft);font-size:.96rem}
+.wb-col p b{color:var(--ink)}
+.wb-clients{font-family:var(--mono);font-size:10px;letter-spacing:.1em;color:#8A5B2B;line-height:1.7}
+.wb-link{margin-top:auto;padding-top:8px;font-family:"Chalkboard SE","Bradley Hand","Comic Sans MS",cursive;font-size:1.05rem;color:var(--rust);text-decoration:none}
+a.wb-link:hover{text-decoration:underline}
 .tenets{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px}
 .tenets span{font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;border:1.5px solid rgba(38,46,29,.3);border-radius:999px;padding:8px 15px;color:var(--ink-soft)}
 .nos{margin-top:30px;font-family:var(--mono);font-size:12px;line-height:1.9;color:var(--ink-soft);max-width:62em}
 .nos b{color:var(--rust);letter-spacing:.12em}
-@media(max-width:860px){.duo{grid-template-columns:1fr}}
+@media(max-width:760px){.workbox{grid-template-columns:1fr}.wb-col:first-child{padding-right:0;border-right:none;padding-bottom:26px;border-bottom:1px solid rgba(38,46,29,.14)}}
 
 /* testimonials */
 .quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:40px}
@@ -252,6 +251,14 @@ section{scroll-margin-top:92px}
 .qcard p{margin:0;font-family:var(--serif);font-style:italic;font-size:1.06rem;line-height:1.62}
 .qcard .who{margin-top:auto;font-family:var(--mono);font-size:10px;letter-spacing:.12em;color:#8A5B2B;line-height:1.7}
 @media(max-width:860px){.quotes{grid-template-columns:1fr}}
+
+/* off the clock */
+.life-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}
+.life-card{background:var(--bg);border:1px solid rgba(38,46,29,.1);border-radius:20px;padding:22px;display:flex;flex-direction:column;gap:6px}
+.life-card .li-ic{font-size:1.7rem;line-height:1}
+.life-card b{font-family:var(--round);font-weight:400;font-size:1.12rem;margin-top:2px}
+.life-card span:last-child{font-size:.92rem;color:var(--ink-soft);line-height:1.5}
+@media(max-width:760px){.life-grid{grid-template-columns:1fr}}
 
 /* ================= footer ================= */
 .footer{background:var(--ink);color:var(--bg);padding:clamp(80px,12vh,140px) 0 0;position:relative;overflow:hidden}
@@ -596,7 +603,7 @@ section{scroll-margin-top:92px}
         <p>Interim product leadership — most recently Olly Olly: agency →&#xFE0E; SaaS, zero →&#xFE0E; 1,000 paying customers.</p>
       </a>
 
-      <a class="tile t-dogs rv" href="#hej">
+      <a class="tile t-dogs rv" href="#life">
         <span class="go">↗&#xFE0E;</span>
         <div class="art" style="color:#C1502E" aria-hidden="true">
           <svg viewBox="0 0 200 44" width="200" height="44">
@@ -610,6 +617,23 @@ section{scroll-margin-top:92px}
         <span class="t-eyebrow">OFF THE CLOCK</span>
         <h3>Life outside the roadmap</h3>
         <p>My wife, a golden retriever, a cocker spaniel and one gloriously unbothered cat. The rest of me: CrossFit, specialty coffee, and building furniture out of actual wood.</p>
+      </a>
+
+      <a class="tile t-podcast rv" href="https://www.youtube.com/@umysl-poczatkujacego" target="_blank" rel="noopener">
+        <span class="go">↗&#xFE0E;</span>
+        <div class="art" aria-hidden="true">
+          <svg viewBox="0 0 92 48" width="92" height="48">
+            <rect x="20" y="5" width="13" height="26" rx="6.5" fill="#C1502E"/>
+            <path d="M13 23 a13.5 13.5 0 0 0 27 0" fill="none" stroke="#262E1D" stroke-width="3"/>
+            <path d="M26.5 36.5 v6 M18 43 h17" stroke="#262E1D" stroke-width="3" stroke-linecap="round"/>
+            <path d="M50 15 q6 9 0 18" fill="none" stroke="#8A5B2B" stroke-width="3" stroke-linecap="round"/>
+            <path d="M59 9 q10 15 0 30" fill="none" stroke="#DFA75C" stroke-width="3" stroke-linecap="round"/>
+            <path d="M68 4 q14 20 0 40" fill="none" stroke="#EDAF1F" stroke-width="3" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <span class="t-eyebrow">JUST FOR FUN</span>
+        <h3>I like talking. A lot.</h3>
+        <p>A little podcast — <i>Umysł Początkującego</i> ("Beginner's Mind" — yes, very Shoshin). We geek out about product strategy, gloriously and inconveniently, entirely in Polish (sorry, rest of the world). Not a Serious Big Project™, just for fun.</p>
       </a>
 
       <a class="tile t-hej rv" href="mailto:piotr@shoshin.pm">
@@ -746,30 +770,20 @@ section{scroll-margin-top:92px}
       <span>focus is a value in itself</span>
     </div>
 
-    <div class="duo">
-      <div class="box a rv">
-        <span class="mode">WORKSHOPS + EXECUTION · SHOSHIN.PM</span>
-        <h3>Strategy, done with you</h3>
-        <p>A consultancy run by practitioners who still practice. We don't hand you a deck and leave — we run our own <b>Strategy Stack</b> method: facilitate your answer with your people, then stay to execute it.</p>
-        <ul>
-          <li><b>strategy scoping</b> — diagnose where you actually stand</li>
-          <li><b>strategy stack</b> — the core workshop: make the hard choices, together</li>
-          <li><b>execution</b> — we implement it with you, in practice</li>
-        </ul>
-        <p class="clients">ALLEGRO · BETFAN · KUŹNIAR MEDIA · VALUESHIPS · ROHLIG SUUS</p>
-        <p class="tagline">honest, allergic to slideware. <a href="https://www.shoshin.pm/">shoshin.pm →&#xFE0E;</a></p>
+    <div class="workbox rv">
+      <div class="wb-col">
+        <span class="mode">ADVISORY · SHOSHIN.PM</span>
+        <b>Strategy, done with you</b>
+        <p>Practitioners who still practice. We run our own <b>Strategy Stack</b> method — facilitate the answer with your team, then stay to execute it. Never deck-and-leave.</p>
+        <span class="wb-clients">ALLEGRO · KUŹNIAR MEDIA · VALUESHIPS · ROHLIG SUUS</span>
+        <a class="wb-link" href="https://www.shoshin.pm/">shoshin.pm →&#xFE0E;</a>
       </div>
-      <div class="box b rv">
-        <span class="mode">EMBEDDED · FRACTIONAL / INTERIM</span>
-        <h3>Interim product lead</h3>
-        <p>Your Head of Product left, the roadmap is a rumour, and the board meeting is in three weeks. I parachute in.</p>
-        <ul>
-          <li>stabilise the team and the plan</li>
-          <li>restart discovery and shipping</li>
-          <li>hire my own replacement, hand over, leave</li>
-        </ul>
-        <p class="clients">DONE AT: OLLY OLLY (AGENCY →&#xFE0E; SAAS, FIRST 1,000 PAYING) · RAMP NETWORK</p>
-        <p class="tagline">call me when it's messy.</p>
+      <div class="wb-col">
+        <span class="mode">INTERIM · FRACTIONAL</span>
+        <b>Call me when it's messy</b>
+        <p>Head of Product gone, roadmap a rumour, board meeting in three weeks? I parachute in — stabilise, restart shipping, hire my own replacement, hand over, leave.</p>
+        <span class="wb-clients">OLLY OLLY · RAMP NETWORK</span>
+        <span class="wb-link">call me when it's on fire.</span>
       </div>
     </div>
 
@@ -796,6 +810,23 @@ section{scroll-margin-top:92px}
         <p>"An astute product manager with an indisputable talent for setting his team up for success. He never shied away from reaching out to users through every channel he could find — and is never afraid to question the status quo."</p>
         <figcaption class="who">PRODUCT DESIGNER — SQUAD-MATE<br>AT HOUSECALL PRO</figcaption>
       </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ================= OFF THE CLOCK ================= -->
+<section class="sect alt" id="life">
+  <div class="wrap">
+    <p class="eyebrow rv">06 · OFF THE CLOCK</p>
+    <h2 class="h2 rv">Life outside the roadmap.</h2>
+    <p class="lede rv">Usually I'm the loudest, most smiling person in the room. I try to live the way I like to build — high energy, low ego, always mid-project.</p>
+    <div class="life-grid">
+      <div class="life-card rv"><span class="li-ic">🐾</span><b>The family</b><span>My wife, a golden retriever, a cocker spaniel and one gloriously unbothered cat. Half my best thinking happens on a walk with them.</span></div>
+      <div class="life-card rv"><span class="li-ic">🏋️</span><b>CrossFit &amp; real food</b><span>Moving a lot and eating well matter to me more than they probably should — it's where the energy comes from.</span></div>
+      <div class="life-card rv"><span class="li-ic">☕</span><b>Specialty coffee</b><span>Quietly obsessed. Ask me about the beans and clear your afternoon.</span></div>
+      <div class="life-card rv"><span class="li-ic">🪵</span><b>Woodworking</b><span>Amateur furniture-maker. Something grounding about building a real, physical thing with your hands.</span></div>
+      <div class="life-card rv"><span class="li-ic">✈️</span><b>Travel</b><span>Favourite trip ever: Australia — surf, ocean, and people living in genuine harmony with nature; kind, and refreshingly unshowy.</span></div>
+      <div class="life-card rv"><span class="li-ic">🧠</span><b>Always learning</b><span>Cooking, AI, whatever's next — I can't sit still. Reality Check exists because I have too many hobbies to safely schedule.</span></div>
     </div>
   </div>
 </section>

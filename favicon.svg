@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="15" fill="#E9EEDC"/>
+  <!-- beanie (drawn behind, capped by the face) -->
+  <circle cx="32" cy="24.5" r="17.5" fill="#C1502E"/>
+  <circle cx="32" cy="8.5" r="3.2" fill="#A8431F"/>
+  <!-- face -->
+  <circle cx="32" cy="39" r="16" fill="#E5B48E"/>
+  <!-- beanie folded brim -->
+  <rect x="13.5" y="29.5" width="37" height="8.5" rx="4.25" fill="#A8431F"/>
+  <!-- cheeks -->
+  <circle cx="22.5" cy="44.5" r="3.2" fill="#D89E76"/>
+  <circle cx="41.5" cy="44.5" r="3.2" fill="#D89E76"/>
+  <!-- eyes -->
+  <circle cx="26.5" cy="41" r="2.3" fill="#262E1D"/>
+  <circle cx="37.5" cy="41" r="2.3" fill="#262E1D"/>
+  <!-- smile -->
+  <path d="M27 48 q5 3.5 10 0" fill="none" stroke="#B27A54" stroke-width="1.9" stroke-linecap="round"/>
+</svg>
