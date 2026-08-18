@@ -171,10 +171,9 @@ section{scroll-margin-top:92px}
 .t-edu .t-eyebrow{color:var(--mustard)}
 .t-edu .go{border-color:rgba(233,238,220,.35)}
 .t-edu:hover .go{background:var(--cream);color:var(--ink)}
-.t-adv{grid-column:span 4}
-.t-fire{grid-column:span 4;background:var(--mustard)}
-.t-fire .t-eyebrow{color:var(--rust-d)}
-.t-fire p{color:#5c4708}
+.t-work{grid-column:span 8;background:var(--mustard)}
+.t-work .t-eyebrow{color:var(--rust-d)}
+.t-work p{color:#5c4708}
 .t-dogs{grid-column:span 5}
 .t-podcast{grid-column:span 7}
 .t-hej{grid-column:span 12;background:var(--rust);color:var(--cream)}
@@ -184,8 +183,8 @@ section{scroll-margin-top:92px}
 .t-hej:hover .go{background:var(--cream);color:var(--rust)}
 .icon-row{display:flex;gap:12px}
 .icon-row .app{width:56px;height:56px;border-radius:15px;display:grid;place-items:center;box-shadow:inset 0 -3px 0 rgba(0,0,0,.14)}
-@media(max-width:1020px){.t-career,.t-side,.t-edu,.t-adv,.t-fire,.t-dogs,.t-podcast,.t-hej{grid-column:span 6}}
-@media(max-width:680px){.t-career,.t-side,.t-edu,.t-adv,.t-fire,.t-dogs,.t-podcast,.t-hej{grid-column:span 12}.tile{min-height:210px}
+@media(max-width:1020px){.t-career,.t-side,.t-edu,.t-work,.t-dogs,.t-podcast{grid-column:span 6}}
+@media(max-width:680px){.t-career,.t-side,.t-edu,.t-work,.t-dogs,.t-podcast,.t-hej{grid-column:span 12}.tile{min-height:210px}
   .t-career .art svg{max-width:235px}}
 
 /* ================= sections ================= */
@@ -228,22 +227,25 @@ section{scroll-margin-top:92px}
 .board .sig{font-family:var(--mono);font-size:11px;color:#B9C3A8;margin-top:22px;letter-spacing:.14em}
 @media(max-width:860px){.edu-grid{grid-template-columns:1fr}}
 
-/* advisory / interim — one combined box */
-.workbox{margin-top:40px;background:var(--bg);border:1px solid rgba(38,46,29,.12);border-radius:28px;padding:clamp(24px,3.5vw,40px);display:grid;grid-template-columns:1fr 1fr;gap:clamp(22px,4vw,48px)}
-.wb-col{display:flex;flex-direction:column;gap:9px}
-.wb-col:first-child{padding-right:clamp(22px,4vw,48px);border-right:1px solid rgba(38,46,29,.14)}
-.wb-col .mode{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;color:var(--rust)}
-.wb-col>b{font-family:var(--round);font-weight:400;font-size:1.35rem}
-.wb-col p{margin:0;color:var(--ink-soft);font-size:.96rem}
-.wb-col p b{color:var(--ink)}
-.wb-clients{font-family:var(--mono);font-size:10px;letter-spacing:.1em;color:#8A5B2B;line-height:1.7}
-.wb-link{margin-top:auto;padding-top:8px;font-family:"Chalkboard SE","Bradley Hand","Comic Sans MS",cursive;font-size:1.05rem;color:var(--rust);text-decoration:none}
-a.wb-link:hover{text-decoration:underline}
+/* advisory / interim */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:40px}
+.duo .box{border-radius:28px;padding:30px;display:flex;flex-direction:column;gap:10px}
+.duo .a{background:var(--bg);border:1px solid rgba(38,46,29,.1)}
+.duo .b{background:var(--mustard)}
+.duo h3{font-family:var(--round);font-weight:400;font-size:1.5rem;margin:0}
+.duo .mode{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;color:var(--rust)}
+.duo .b .mode{color:var(--rust-d)}
+.duo p{margin:0;color:var(--ink-soft);font-size:.97rem}
+.duo .b p{color:#5c4708}
+.duo ul{margin:6px 0 0;padding-left:1.15em;font-size:.93rem;color:var(--ink-soft)}
+.duo .b ul{color:#5c4708}
+.duo .tagline{margin-top:auto;padding-top:16px;font-family:"Chalkboard SE","Bradley Hand","Comic Sans MS",cursive;font-size:1.05rem}
+.duo .clients{margin-top:8px;font-family:var(--mono);font-size:10px;letter-spacing:.1em;color:#8A5B2B;line-height:1.7}
 .tenets{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px}
 .tenets span{font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;border:1.5px solid rgba(38,46,29,.3);border-radius:999px;padding:8px 15px;color:var(--ink-soft)}
 .nos{margin-top:30px;font-family:var(--mono);font-size:12px;line-height:1.9;color:var(--ink-soft);max-width:62em}
 .nos b{color:var(--rust);letter-spacing:.12em}
-@media(max-width:760px){.workbox{grid-template-columns:1fr}.wb-col:first-child{padding-right:0;border-right:none;padding-bottom:26px;border-bottom:1px solid rgba(38,46,29,.14)}}
+@media(max-width:860px){.duo{grid-template-columns:1fr}}
 
 /* testimonials */
 .quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:40px}
@@ -574,33 +576,24 @@ a.wb-link:hover{text-decoration:underline}
         <p>Not just product people. Building a radically hands-on postgrad at Collegium Da Vinci — out to fix how universities teach: build, don't just listen.</p>
       </a>
 
-      <a class="tile t-adv rv" href="#advisory">
+      <a class="tile t-work rv" href="#advisory">
         <span class="go">↗&#xFE0E;</span>
-        <div class="art" aria-hidden="true">
-          <svg viewBox="0 0 170 60" width="170" height="60">
-            <rect x="2" y="4" width="166" height="52" rx="10" fill="#E9EEDC" stroke="rgba(38,46,29,.2)"/>
+        <div class="art" style="display:flex;align-items:center;gap:18px" aria-hidden="true">
+          <svg viewBox="0 0 170 60" width="150" height="53">
+            <rect x="2" y="4" width="166" height="52" rx="10" fill="#F6F2E6" stroke="rgba(38,46,29,.18)"/>
             <text x="16" y="34" font-family="Futura,Avenir Next,sans-serif" font-weight="700" font-size="19" fill="#262E1D">YOU</text>
             <text x="74" y="34" font-family="Futura,Avenir Next,sans-serif" font-weight="700" font-size="19" fill="#C1502E">→&#xFE0E;</text>
             <text x="102" y="34" font-family="Futura,Avenir Next,sans-serif" font-weight="700" font-size="19" fill="#262E1D">PMF</text>
             <text x="16" y="48" font-family="Menlo,monospace" font-size="6.4" fill="#8A5B2B" letter-spacing="0.4">BOARDING PASS · GATE 4 · SEAT 1A</text>
           </svg>
-        </div>
-        <span class="t-eyebrow">ADVISORY</span>
-        <h3>shoshin.pm</h3>
-        <p>Our own Strategy Stack method — workshops that stay for execution. Allegro, Kuźniar Media, Valueships and friends.</p>
-      </a>
-
-      <a class="tile t-fire rv" href="#advisory">
-        <span class="go">↗&#xFE0E;</span>
-        <div class="art" aria-hidden="true">
-          <svg viewBox="0 0 60 66" width="56" height="62">
+          <svg viewBox="0 0 60 66" width="42" height="46">
             <path d="M 30 4 C 38 16 48 24 48 40 A 18 18 0 0 1 12 40 C 12 30 18 24 22 16 C 24 24 28 26 30 24 C 32 20 30 12 30 4 Z" fill="#C1502E"/>
-            <path d="M 30 34 C 34 40 38 42 38 48 A 8.5 8.5 0 0 1 21 48 C 21 42 27 40 30 34 Z" fill="#EDAF1F"/>
+            <path d="M 30 34 C 34 40 38 42 38 48 A 8.5 8.5 0 0 1 21 48 C 21 42 27 40 30 34 Z" fill="#F6F2E6"/>
           </svg>
         </div>
-        <span class="t-eyebrow">INTERIM</span>
-        <h3>Call me when it's messy</h3>
-        <p>Interim product leadership — most recently Olly Olly: agency →&#xFE0E; SaaS, zero →&#xFE0E; 1,000 paying customers.</p>
+        <span class="t-eyebrow">WORK WITH ME</span>
+        <h3>Advisory &amp; interim</h3>
+        <p>Strategy workshops that stay for execution (shoshin.pm), or embedded interim product leadership when it's on fire. Two doors in — pick by how much is burning.</p>
       </a>
 
       <a class="tile t-dogs rv" href="#life">
@@ -770,20 +763,30 @@ a.wb-link:hover{text-decoration:underline}
       <span>focus is a value in itself</span>
     </div>
 
-    <div class="workbox rv">
-      <div class="wb-col">
-        <span class="mode">ADVISORY · SHOSHIN.PM</span>
-        <b>Strategy, done with you</b>
-        <p>Practitioners who still practice. We run our own <b>Strategy Stack</b> method — facilitate the answer with your team, then stay to execute it. Never deck-and-leave.</p>
-        <span class="wb-clients">ALLEGRO · KUŹNIAR MEDIA · VALUESHIPS · ROHLIG SUUS</span>
-        <a class="wb-link" href="https://www.shoshin.pm/">shoshin.pm →&#xFE0E;</a>
+    <div class="duo">
+      <div class="box a rv">
+        <span class="mode">WORKSHOPS + EXECUTION · SHOSHIN.PM</span>
+        <h3>Strategy, done with you</h3>
+        <p>A consultancy run by practitioners who still practice. We don't hand you a deck and leave — we run our own <b>Strategy Stack</b> method: facilitate your answer with your people, then stay to execute it.</p>
+        <ul>
+          <li><b>strategy scoping</b> — diagnose where you actually stand</li>
+          <li><b>strategy stack</b> — the core workshop: make the hard choices, together</li>
+          <li><b>execution</b> — we implement it with you, in practice</li>
+        </ul>
+        <p class="clients">ALLEGRO · BETFAN · KUŹNIAR MEDIA · VALUESHIPS · ROHLIG SUUS</p>
+        <p class="tagline">honest, allergic to slideware. <a href="https://www.shoshin.pm/">shoshin.pm →&#xFE0E;</a></p>
       </div>
-      <div class="wb-col">
-        <span class="mode">INTERIM · FRACTIONAL</span>
-        <b>Call me when it's messy</b>
-        <p>Head of Product gone, roadmap a rumour, board meeting in three weeks? I parachute in — stabilise, restart shipping, hire my own replacement, hand over, leave.</p>
-        <span class="wb-clients">OLLY OLLY · RAMP NETWORK</span>
-        <span class="wb-link">call me when it's on fire.</span>
+      <div class="box b rv">
+        <span class="mode">EMBEDDED · FRACTIONAL / INTERIM</span>
+        <h3>Interim product lead</h3>
+        <p>Your Head of Product left, the roadmap is a rumour, and the board meeting is in three weeks. I parachute in.</p>
+        <ul>
+          <li>stabilise the team and the plan</li>
+          <li>restart discovery and shipping</li>
+          <li>hire my own replacement, hand over, leave</li>
+        </ul>
+        <p class="clients">DONE AT: OLLY OLLY (AGENCY →&#xFE0E; SAAS, FIRST 1,000 PAYING) · RAMP NETWORK</p>
+        <p class="tagline">call me when it's messy.</p>
       </div>
     </div>
 
