@@ -146,13 +146,6 @@ section{scroll-margin-top:92px}
 .play .note{animation:noteFly 1.15s ease-out var(--nd,7.55s) 2}
 @keyframes noteFly{0%{opacity:0;transform:translate(0,0)}25%{opacity:1}100%{opacity:0;transform:translate(var(--nx,26px),-36px)}}
 
-/* ================= marquee ================= */
-.marquee{border-top:2.5px solid var(--ink);border-bottom:2.5px solid var(--ink);background:var(--ink);color:var(--bg);overflow:hidden;padding:13px 0}
-.marquee .track{display:inline-flex;white-space:nowrap;font-family:var(--geo);font-weight:600;font-size:.92rem;letter-spacing:.12em;text-transform:uppercase;animation:mq 28s linear infinite}
-.marquee .track span{padding-right:2.2rem}
-.marquee .track .y{color:var(--mustard)}
-@keyframes mq{to{transform:translateX(-50%)}}
-
 /* ================= bento menu ================= */
 .menu{padding:clamp(70px,10vh,120px) 0 30px}
 .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:18px;margin-top:38px}
@@ -501,20 +494,6 @@ section{scroll-margin-top:92px}
     </svg>
   </div>
 </section>
-
-<!-- ================= MARQUEE ================= -->
-<div class="marquee" aria-hidden="true">
-  <div class="track">
-    <span>CURRENTLY: CPO @ TEAM INTERNET GROUP</span><span class="y">✺</span>
-    <span>ALSO: FOUNDER @ SHOSHIN.PM</span><span class="y">✺</span>
-    <span>BUILDING: A PRODUCT POSTGRAD @ COLLEGIUM DA VINCI</span><span class="y">✺</span>
-    <span>PREVIOUSLY: HOUSECALL PRO · DELIVERY HERO · RAMP NETWORK</span><span class="y">✺</span>
-    <span>CURRENTLY: CPO @ TEAM INTERNET GROUP</span><span class="y">✺</span>
-    <span>ALSO: FOUNDER @ SHOSHIN.PM</span><span class="y">✺</span>
-    <span>BUILDING: A PRODUCT POSTGRAD @ COLLEGIUM DA VINCI</span><span class="y">✺</span>
-    <span>PREVIOUSLY: HOUSECALL PRO · DELIVERY HERO · RAMP NETWORK</span><span class="y">✺</span>
-  </div>
-</div>
 
 <!-- ================= BENTO MENU ================= -->
 <section class="menu" id="menu">
