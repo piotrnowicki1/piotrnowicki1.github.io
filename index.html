@@ -169,7 +169,9 @@ section{scroll-margin-top:92px}
 .t-work p{color:#5c4708}
 .t-dogs{grid-column:span 5}
 .t-podcast{grid-column:span 7}
-.t-hej{grid-column:span 12;background:var(--rust);color:var(--cream)}
+.t-hej{grid-column:span 12;background:var(--rust);color:var(--cream);flex-direction:row;align-items:center;justify-content:flex-start;gap:clamp(20px,3.5vw,40px)}
+.hej-photo{width:clamp(92px,12vw,132px);height:clamp(92px,12vw,132px);border-radius:50%;object-fit:cover;object-position:50% 30%;flex:none;border:3px solid rgba(246,242,230,.5)}
+.hej-text{display:flex;flex-direction:column;gap:6px}
 .t-hej .t-eyebrow{color:var(--mustard)}
 .t-hej p{color:#F3D9CC}
 .t-hej .go{border-color:rgba(246,242,230,.4)}
@@ -613,9 +615,12 @@ section{scroll-margin-top:92px}
 
       <a class="tile t-hej rv" href="mailto:piotr@shoshin.pm">
         <span class="go">↗&#xFE0E;</span>
-        <span class="t-eyebrow">SAY HEY</span>
-        <h3>piotr@shoshin.pm</h3>
-        <p>Recruiting, collaborating, or just walking your dog past my inbox — all valid reasons.</p>
+        <img class="hej-photo" src="me.jpg" alt="Piotr Nowicki" width="128" height="128">
+        <div class="hej-text">
+          <span class="t-eyebrow">SAY HEY</span>
+          <h3>piotr@shoshin.pm</h3>
+          <p>Recruiting, collaborating, or just walking your dog past my inbox — all valid reasons.</p>
+        </div>
       </a>
     </div>
   </div>
