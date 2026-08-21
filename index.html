@@ -2,308 +2,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <title>Piotr Nowicki - product guy</title>
-
-<!-- PostHog analytics -->
-<script>
-    !function(t,e){var o,n,p,r;e.__SV||(window.posthog && window.posthog.__loaded)||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}p||((p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",p.onerror=function(){p=null},(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r));var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="fo po init Fo Oo qo Zs Lo Bo Ro capture Do vo Go calculateEventProperties Vo register register_once register_for_session unregister unregister_for_session Ko Ao Zo getFeatureFlag getFeatureFlagPayload getFeatureFlagResult getAllFeatureFlags isFeatureEnabled reloadFeatureFlags updateFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSurveysLoaded onSessionId getSurveys getActiveMatchingSurveys renderSurvey displaySurvey cancelPendingSurvey canRenderSurvey canRenderSurveyAsync Yo identify setPersonProperties unsetPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset Xo shutdown setIdentity clearIdentity get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException addExceptionStep captureLog startExceptionAutocapture stopExceptionAutocapture loadToolbar get_property getSessionProperty Qo Uo createPersonProfile setInternalOrTestUser Jo Eo il opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing get_explicit_consent_status is_capturing clear_opt_in_out_capturing Ho debug Js mn getPageViewId captureTraceFeedback captureTraceMetric Co".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
-    posthog.init('phc_yMdHoWLKns2KvMxiTnfqHy4j3rv8sKkGy2LBZpzmXUSh', {
-        api_host: 'https://eu.i.posthog.com',
-        defaults: '2026-05-30',
-        person_profiles: 'identified_only', // or 'always' to create profiles for anonymous users as well
-    })
-</script>
-
-<style>
-/* ================= tokens ================= */
-:root{
-  --bg:#E9EEDC;
-  --ink:#262E1D;
-  --ink-soft:#3B452E;
-  --ground:#4F5C3F;
-  --ground-d:#3E4A31;
-  --rust:#C1502E;
-  --rust-d:#8F3517;
-  --mustard:#EDAF1F;
-  --gold:#DFA75C;
-  --cream:#F6F2E6;
-  --cobalt:#2A3FD4;
-  --mono:"SF Mono","Menlo","Cascadia Code","Consolas",monospace;
-  --body:"Avenir Next","Avenir","Helvetica Neue","Segoe UI",sans-serif;
-  --round:"Arial Rounded MT Bold",ui-rounded,"Verdana Rounded","Trebuchet MS",sans-serif;
-  --serif:"Baskerville","Palatino","Palatino Linotype",Georgia,serif;
-  --geo:"Futura","Avenir Next","Century Gothic","Trebuchet MS",sans-serif;
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.55}
-a{color:inherit}
-img,svg{max-width:100%}
-section{scroll-margin-top:92px}
-:focus-visible{outline:2.5px solid var(--rust);outline-offset:3px}
-.wrap{max-width:1200px;margin:0 auto;padding:0 clamp(20px,4.5vw,48px)}
-.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.18em;color:var(--rust);margin:0 0 14px}
-.h2{font-family:var(--round);font-weight:400;font-size:clamp(1.9rem,3.6vw,2.9rem);letter-spacing:-.01em;margin:0 0 10px;text-wrap:balance}
-.lede{color:var(--ink-soft);max-width:38em;margin:0}
-
-/* reveal on scroll */
-.rv{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s cubic-bezier(.22,.9,.3,1)}
-.rv.in{opacity:1;transform:none}
-
-/* ================= nav ================= */
-.nav{position:fixed;top:0;left:0;right:0;z-index:60;display:flex;align-items:center;gap:18px;padding:14px clamp(18px,4vw,42px);background:rgba(233,238,220,.8);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(38,46,29,.09)}
-.nav .mark{font-family:var(--round);font-size:1.15rem;text-decoration:none;letter-spacing:-.01em}
-.nav .mark b{color:var(--rust);font-weight:400}
-.nav nav{margin-left:auto;display:flex;align-items:center;gap:6px}
-.nav nav a{font-family:var(--mono);font-size:12.5px;letter-spacing:.06em;text-decoration:none;padding:8px 12px;border-radius:999px}
-.nav nav a:hover{background:rgba(38,46,29,.08)}
-.nav nav .hej{background:var(--rust);color:var(--cream);box-shadow:0 2px 0 var(--rust-d)}
-.nav nav .hej:hover{background:var(--rust-d)}
-@media(max-width:640px){.nav nav a:not(.hej){display:none}}
-
-/* ================= hero ================= */
-.hero{min-height:100svh;position:relative;overflow:hidden;display:flex;flex-direction:column;--scenew:min(100vw,1500px)}
-.hero-copy{position:relative;z-index:2;padding:clamp(96px,15vh,170px) clamp(20px,5.5vw,80px) 0;max-width:1050px}
-.kicker{font-family:var(--mono);font-size:13px;letter-spacing:.18em;color:#8A5B2B;margin:0 0 20px}
-.hd{margin:0 0 33px;font-weight:400}
-.hd .row{display:block;font-size:clamp(1.9rem,4.9vw,4.3rem);line-height:1.12;white-space:nowrap}
-.hd .row em{font-family:var(--serif);font-style:italic;font-weight:400;font-size:.64em}
-.hd .row>b,.hd .row .adv{display:inline-block;transition:transform .22s cubic-bezier(.34,1.56,.64,1)}
-.hd .prod{font-family:var(--round);font-weight:400;letter-spacing:-.01em}
-.hd .cpo{font-family:var(--geo);font-weight:700;letter-spacing:.02em;color:transparent;-webkit-text-stroke:2.5px var(--cobalt)}
-.hd .bld{font-family:var(--serif);font-style:italic;font-weight:600;background:linear-gradient(104deg,transparent 2%,var(--mustard) 6%,var(--mustard) 94%,transparent 98%);padding:0 .12em}
-.hd .adv{font-family:var(--round);font-size:.82em;background:var(--rust);color:var(--cream);border-radius:.55em;padding:.02em .32em .07em;transform:rotate(-2.5deg);box-shadow:2.5px 3.5px 0 var(--ink)}
-.hd .row>b:hover,.hd .adv:hover{transform:rotate(2deg) scale(1.05)}
-.hd .ast{color:var(--rust);display:inline-block;animation:spin 9s linear infinite;font-size:.62em;vertical-align:.16em}
-@keyframes spin{to{transform:rotate(360deg)}}
-.hero-sub{font-size:clamp(1rem,1.4vw,1.18rem);max-width:33em;margin:0 0 28px;color:var(--ink-soft)}
-.cta{display:flex;gap:14px;flex-wrap:wrap}
-.cta a{text-decoration:none;font-family:var(--round);font-size:1rem;padding:13px 24px;border-radius:999px;transition:transform .18s,box-shadow .18s}
-.cta .solid{background:var(--rust);color:var(--cream);box-shadow:0 3px 0 var(--rust-d)}
-.cta .solid:hover{transform:translateY(-2px);box-shadow:0 5px 0 var(--rust-d)}
-.cta .ghost{border:2px solid var(--ink)}
-.cta .ghost:hover{background:var(--ink);color:var(--bg)}
-.hero-ground{position:absolute;left:0;right:0;bottom:0;height:calc(var(--scenew) * .0584);background:var(--ground)}
-.scene{position:absolute;left:0;right:0;bottom:0;display:flex;justify-content:center;overflow:hidden}
-.scene svg{width:var(--scenew);height:auto;display:block;flex:none;max-width:none}
-@media(max-width:760px){
-  .hero{--scenew:180vw}
-  .hd .row{white-space:normal}
-}
-
-/* walk-in machinery — plays whenever hero is in view (.play) */
-/* story timeline: 0-2.8s piotr walks in · 3s laptop up+open · 4.4s quota toast ·
-   6.25s lid closes · 6.6s laptop yeeted · 7.3s whistle · 8.7s dogs sprint in · 10.6s woof */
-.play .slide{animation:walkIn var(--wd,2.8s) linear var(--wdel,0s) 1 both}
-@keyframes walkIn{from{transform:translateX(-1080px)}to{transform:translateX(0)}}
-.swingA,.swingB,.trotA,.trotB{transform-box:fill-box;transform-origin:50% 0}
-.play .swingA{animation:swingA var(--wd,2.8s) linear 1}
-.play .swingB{animation:swingB var(--wd,2.8s) linear 1}
-.play .trotA{animation:trotA var(--wd,2.8s) linear var(--wdel,0s) 1}
-.play .trotB{animation:trotB var(--wd,2.8s) linear var(--wdel,0s) 1}
-@keyframes swingA{0%{transform:rotate(0)}12.5%{transform:rotate(19deg)}37.5%{transform:rotate(-19deg)}62.5%{transform:rotate(19deg)}87.5%{transform:rotate(-19deg)}100%{transform:rotate(0)}}
-@keyframes swingB{0%{transform:rotate(0)}12.5%{transform:rotate(-19deg)}37.5%{transform:rotate(19deg)}62.5%{transform:rotate(-19deg)}87.5%{transform:rotate(19deg)}100%{transform:rotate(0)}}
-@keyframes trotA{0%{transform:rotate(0)}12.5%{transform:rotate(13deg)}37.5%{transform:rotate(-13deg)}62.5%{transform:rotate(13deg)}87.5%{transform:rotate(-13deg)}100%{transform:rotate(0)}}
-@keyframes trotB{0%{transform:rotate(0)}12.5%{transform:rotate(-13deg)}37.5%{transform:rotate(13deg)}62.5%{transform:rotate(-13deg)}87.5%{transform:rotate(13deg)}100%{transform:rotate(0)}}
-.play .bob{animation:bob calc(var(--wd,2.8s)/8) ease-in-out var(--wdel,0s) 8 alternate}
-@keyframes bob{from{transform:translateY(0)}to{transform:translateY(-3.5px)}}
-.tailwag{transform-box:fill-box;transform-origin:100% 100%;animation:wag .5s ease-in-out infinite alternate}
-.tailwag.fast{animation-duration:.32s}
-@keyframes wag{from{transform:rotate(-9deg)}to{transform:rotate(13deg)}}
-.earflop{transform-box:fill-box;transform-origin:50% 8%;animation:flop 1.15s ease-in-out infinite alternate}
-@keyframes flop{from{transform:rotate(-4deg)}to{transform:rotate(5deg)}}
-.eye{transform-box:fill-box;transform-origin:50% 50%;animation:blinky 4.4s linear infinite}
-.eye.e2{animation-delay:1.3s}.eye.e3{animation-delay:2.5s}
-@keyframes blinky{0%,93.5%,100%{transform:scaleY(1)}96%{transform:scaleY(.12)}}
-.steam{animation:steam 2.4s ease-in-out infinite}
-.steam.s2{animation-delay:1.2s}
-@keyframes steam{0%{opacity:0;transform:translateY(3px)}35%{opacity:.5}100%{opacity:0;transform:translateY(-8px)}}
-.cloud{animation:drift 14s ease-in-out infinite alternate}
-.cloud.c2{animation-duration:19s;animation-delay:-6s}
-@keyframes drift{from{transform:translateX(0)}to{transform:translateX(34px)}}
-.rays{transform-box:fill-box;transform-origin:50% 50%;animation:spin 46s linear infinite}
-.birds{animation:fly 30s linear infinite}
-@keyframes fly{from{transform:translateX(-160px)}to{transform:translateX(1400px)}}
-.woof{opacity:0;transform-box:fill-box;transform-origin:20% 100%}
-.play .woof{animation:woofpop .55s cubic-bezier(.34,1.56,.64,1) 10.6s forwards}
-@keyframes woofpop{from{opacity:0;transform:scale(.5)}to{opacity:1;transform:scale(1)}}
-
-/* the laptop bit */
-.lapOpen,.armUp,.scrUI,.scrBan,.toast,.flyLap,.note,.wmouth{opacity:0}
-@keyframes appear{to{opacity:1}}
-@keyframes fadeAway{to{opacity:0}}
-.play .lapClosed{animation:fadeAway .22s linear 3s forwards}
-.play .armBack{animation:fadeAway .22s linear 3s forwards,appear .25s linear 6.6s forwards}
-.play .armUp{animation:appear .25s linear 3.05s forwards,fadeAway .18s linear 6.6s forwards}
-.play .lapOpen{animation:appear .25s linear 3.05s forwards,fadeAway .18s linear 6.6s forwards}
-.lid{transform-box:fill-box;transform-origin:50% 100%}
-.play .lid{animation:lidOpen .45s cubic-bezier(.22,.9,.3,1.2) 3.3s both,lidClose .3s ease-in 6.25s forwards}
-@keyframes lidOpen{from{transform:scaleY(.06)}to{transform:scaleY(1)}}
-@keyframes lidClose{to{transform:scaleY(.06)}}
-.play .scrUI{animation:appear .3s linear 3.95s forwards}
-.scrBan{transform-box:fill-box}
-.play .scrBan{animation:banIn .4s cubic-bezier(.34,1.56,.64,1) 4.45s forwards}
-@keyframes banIn{from{opacity:0;transform:translateY(-9px)}to{opacity:1;transform:translateY(0)}}
-.toast{transform-box:fill-box;transform-origin:50% 100%}
-.play .toast{animation:toastLife 1.9s ease 4.4s forwards}
-@keyframes toastLife{0%{opacity:0;transform:scale(.6)}12%{opacity:1;transform:scale(1.06)}20%{transform:scale(1)}82%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(.9)}}
-.flyLap{transform-box:fill-box;transform-origin:center}
-.play .flyLap{animation:yeet .85s cubic-bezier(.35,-.1,.7,.8) 6.6s forwards}
-@keyframes yeet{0%{opacity:1;transform:translate(0,0) rotate(0deg)}100%{opacity:1;transform:translate(-680px,-540px) rotate(-780deg)}}
-.pflip{transform-box:fill-box;transform-origin:50% 50%}
-.play .pflip{animation:turnAround .35s ease-in-out 7.05s forwards}
-@keyframes turnAround{0%{transform:scaleX(1)}50%{transform:scaleX(.08)}100%{transform:scaleX(-1)}}
-.play .wmouth{animation:appear .15s linear 7.5s forwards,fadeAway .2s linear 9.5s forwards}
-.play .note{animation:noteFly 1.15s ease-out var(--nd,7.55s) 2}
-@keyframes noteFly{0%{opacity:0;transform:translate(0,0)}25%{opacity:1}100%{opacity:0;transform:translate(var(--nx,26px),-36px)}}
-
-/* ================= bento menu ================= */
-.menu{padding:clamp(70px,10vh,120px) 0 30px}
-.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:18px;margin-top:38px}
-.tile{position:relative;display:flex;flex-direction:column;justify-content:flex-end;gap:6px;min-height:250px;padding:26px;border-radius:30px;background:var(--cream);border:1px solid rgba(38,46,29,.08);box-shadow:0 2px 6px rgba(38,46,29,.06);text-decoration:none;overflow:hidden;transition:transform .22s cubic-bezier(.22,.9,.3,1),box-shadow .22s}
-.tile:hover{transform:translateY(-5px) rotate(-.35deg);box-shadow:0 18px 34px rgba(38,46,29,.14)}
-.tile .t-eyebrow{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;color:var(--rust)}
-.tile h3{font-family:var(--round);font-weight:400;font-size:clamp(1.3rem,2vw,1.7rem);margin:0;letter-spacing:-.01em}
-.tile p{margin:0;font-size:.92rem;color:var(--ink-soft);max-width:30em}
-.tile .go{position:absolute;top:18px;right:18px;width:38px;height:38px;border-radius:50%;border:1.5px solid rgba(38,46,29,.25);display:grid;place-items:center;font-size:1rem;transition:transform .22s,background .22s,color .22s}
-.tile:hover .go{background:var(--ink);color:var(--cream);transform:rotate(45deg)}
-.tile .art{margin-bottom:auto;padding-bottom:14px}
-.t-career{grid-column:span 7}
-.t-side{grid-column:span 5}
-.t-edu{grid-column:span 4;background:var(--ink);color:var(--bg)}
-.t-edu p{color:#B9C3A8}
-.t-edu .t-eyebrow{color:var(--mustard)}
-.t-edu .go{border-color:rgba(233,238,220,.35)}
-.t-edu:hover .go{background:var(--cream);color:var(--ink)}
-.t-work{grid-column:span 8;background:var(--mustard)}
-.t-work .t-eyebrow{color:var(--rust-d)}
-.t-work p{color:#5c4708}
-.t-dogs{grid-column:span 5}
-.t-podcast{grid-column:span 7}
-.t-hej{grid-column:span 12;background:var(--rust);color:var(--cream);flex-direction:row;align-items:center;justify-content:flex-start;gap:clamp(20px,3.5vw,40px)}
-.hej-photo{width:clamp(92px,12vw,132px);height:clamp(92px,12vw,132px);border-radius:50%;object-fit:cover;object-position:50% 30%;flex:none;border:3px solid rgba(246,242,230,.5)}
-.hej-text{display:flex;flex-direction:column;gap:6px}
-.t-hej .t-eyebrow{color:var(--mustard)}
-.t-hej p{color:#F3D9CC}
-.t-hej .go{border-color:rgba(246,242,230,.4)}
-.t-hej:hover .go{background:var(--cream);color:var(--rust)}
-.icon-row{display:flex;gap:12px}
-.icon-row .app{width:56px;height:56px;border-radius:15px;display:grid;place-items:center;box-shadow:inset 0 -3px 0 rgba(0,0,0,.14)}
-@media(max-width:1020px){.t-career,.t-side,.t-edu,.t-work,.t-dogs,.t-podcast{grid-column:span 6}}
-@media(max-width:680px){.t-career,.t-side,.t-edu,.t-work,.t-dogs,.t-podcast,.t-hej{grid-column:span 12}.tile{min-height:210px}
-  .t-career .art svg{max-width:235px}}
-
-/* ================= sections ================= */
-.sect{padding:clamp(70px,10vh,120px) 0}
-.sect.alt{background:var(--cream)}
-
-/* career timeline */
-.tl{list-style:none;margin:44px 0 0;padding:0;border-left:2.5px solid rgba(38,46,29,.18)}
-.tl li{position:relative;padding:0 0 34px 32px;max-width:46em}
-.tl li::before{content:"";position:absolute;left:-8px;top:6px;width:13px;height:13px;border-radius:50%;background:var(--rust);border:3px solid var(--bg)}
-.tl li:last-child{padding-bottom:0}
-.tl .when{font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;color:#8A5B2B}
-.tl h3{font-family:var(--round);font-weight:400;font-size:1.35rem;margin:6px 0 4px}
-.tl h3 small{font-family:var(--serif);font-style:italic;font-size:.78em;color:var(--ink-soft)}
-.tl p{margin:0;color:var(--ink-soft);font-size:.98rem}
-.cv-note{margin-top:30px;font-family:var(--mono);font-size:12.5px;color:#8A5B2B}
-.cv-note a{color:var(--rust)}
-
-/* side projects */
-.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:40px}
-.pcard{background:var(--bg);border:1px solid rgba(38,46,29,.1);border-radius:24px;padding:24px;display:flex;flex-direction:column;gap:10px;text-decoration:none;transition:transform .2s,box-shadow .2s}
-a.pcard:hover{transform:translateY(-4px);box-shadow:0 14px 28px rgba(38,46,29,.12)}
-.pcard .app{width:58px;height:58px;border-radius:15px;display:grid;place-items:center;box-shadow:inset 0 -3px 0 rgba(0,0,0,.14)}
-.pcard h3{font-family:var(--round);font-weight:400;font-size:1.25rem;margin:6px 0 0}
-.pcard p{margin:0;font-size:.93rem;color:var(--ink-soft)}
-.pcard .st{margin-top:auto;padding-top:10px;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;color:var(--rust)}
-.cards.two{grid-template-columns:repeat(2,1fr);max-width:820px}
-.side-note{margin:22px 0 0;font-family:var(--mono);font-size:12px;line-height:1.7;color:#8A5B2B;max-width:52em}
-@media(max-width:860px){.cards,.cards.two{grid-template-columns:1fr}}
-
-/* education */
-.edu-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(24px,4vw,60px);align-items:start;margin-top:8px}
-.edu-list{list-style:none;margin:34px 0 0;padding:0;display:flex;flex-direction:column;gap:18px}
-.edu-list li{display:flex;gap:16px;align-items:flex-start;max-width:36em}
-.edu-list .dot{flex:none;width:34px;height:34px;border-radius:10px;background:var(--mustard);display:grid;place-items:center;font-family:var(--round);font-size:.95rem;box-shadow:inset 0 -2.5px 0 rgba(0,0,0,.16)}
-.edu-list b{font-family:var(--round);font-weight:400;display:block}
-.edu-list span{font-size:.93rem;color:var(--ink-soft)}
-.board{background:var(--ink);border-radius:26px;padding:30px;color:var(--bg);border:8px solid #6B4A32;box-shadow:0 12px 28px rgba(38,46,29,.18)}
-.board .chalk{font-family:"Chalkboard SE","Bradley Hand","Comic Sans MS",cursive;font-size:1.35rem;line-height:1.6}
-.board .chalk u{text-decoration-color:var(--mustard);text-decoration-thickness:3px;text-underline-offset:6px}
-.board .sig{font-family:var(--mono);font-size:11px;color:#B9C3A8;margin-top:22px;letter-spacing:.14em}
-@media(max-width:860px){.edu-grid{grid-template-columns:1fr}}
-
-/* advisory / interim */
-.duo{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:40px}
-.duo .box{border-radius:28px;padding:30px;display:flex;flex-direction:column;gap:10px}
-.duo .a{background:var(--bg);border:1px solid rgba(38,46,29,.1)}
-.duo .b{background:var(--mustard)}
-.duo h3{font-family:var(--round);font-weight:400;font-size:1.5rem;margin:0}
-.duo .mode{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;color:var(--rust)}
-.duo .b .mode{color:var(--rust-d)}
-.duo p{margin:0;color:var(--ink-soft);font-size:.97rem}
-.duo .b p{color:#5c4708}
-.duo ul{margin:6px 0 0;padding-left:1.15em;font-size:.93rem;color:var(--ink-soft)}
-.duo .b ul{color:#5c4708}
-.duo .tagline{margin-top:auto;padding-top:16px;font-family:"Chalkboard SE","Bradley Hand","Comic Sans MS",cursive;font-size:1.05rem}
-.duo .clients{margin-top:8px;font-family:var(--mono);font-size:10px;letter-spacing:.1em;color:#8A5B2B;line-height:1.7}
-.tenets{display:flex;gap:10px;flex-wrap:wrap}
-.tenets span{font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;border:1.5px solid rgba(38,46,29,.3);border-radius:999px;padding:8px 15px;color:var(--ink-soft)}
-.beliefs-block{margin-top:36px;padding-top:30px;border-top:1px solid rgba(38,46,29,.15);display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,52px)}
-.belief-label{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:var(--rust);margin-bottom:16px}
-.nogo{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:9px;font-size:.96rem;color:var(--ink-soft)}
-.nogo li{position:relative;padding-left:24px}
-.nogo li::before{content:"✕";position:absolute;left:0;top:.05em;color:var(--rust);font-weight:700}
-@media(max-width:760px){.beliefs-block{grid-template-columns:1fr;gap:28px}}
-@media(max-width:860px){.duo{grid-template-columns:1fr}}
-
-/* testimonials */
-.quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:40px}
-.qcard{margin:0;background:var(--cream);border:1px solid rgba(38,46,29,.08);border-radius:26px;padding:28px;display:flex;flex-direction:column;gap:16px}
-.qcard p{margin:0;font-family:var(--serif);font-style:italic;font-size:1.06rem;line-height:1.62}
-.qcard .who{margin-top:auto;font-family:var(--mono);font-size:10px;letter-spacing:.12em;color:#8A5B2B;line-height:1.7}
-@media(max-width:860px){.quotes{grid-template-columns:1fr}}
-
-/* off the clock */
-.life-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}
-.life-card{background:var(--bg);border:1px solid rgba(38,46,29,.1);border-radius:20px;padding:22px;display:flex;flex-direction:column;gap:6px}
-.life-card .li-ic{font-size:1.7rem;line-height:1}
-.life-card b{font-family:var(--round);font-weight:400;font-size:1.12rem;margin-top:2px}
-.life-card span:last-child{font-size:.92rem;color:var(--ink-soft);line-height:1.5}
-@media(max-width:760px){.life-grid{grid-template-columns:1fr}}
-
-/* ================= footer ================= */
-.footer{background:var(--ink);color:var(--bg);padding:clamp(80px,12vh,140px) 0 0;position:relative;overflow:hidden}
-.footer .big{font-family:var(--round);font-weight:400;font-size:clamp(3rem,9vw,7.5rem);letter-spacing:-.02em;margin:0 0 18px;line-height:1}
-.footer .big .dot{color:var(--rust)}
-.footer .sub{color:#B9C3A8;max-width:34em;margin:0 0 30px}
-.footer .mailbtn{display:inline-block;font-family:var(--round);font-size:1.1rem;text-decoration:none;background:var(--mustard);color:var(--ink);padding:16px 30px;border-radius:999px;box-shadow:0 4px 0 #B98908;transition:transform .18s,box-shadow .18s}
-.footer .mailbtn:hover{transform:translateY(-2px);box-shadow:0 6px 0 #B98908}
-.footer-cta{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
-.footer .linkbtn{display:inline-block;font-family:var(--round);font-size:1.1rem;text-decoration:none;color:var(--bg);border:2px solid rgba(233,238,220,.45);padding:14px 26px;border-radius:999px;transition:background .18s,color .18s,border-color .18s}
-.footer .linkbtn:hover{background:var(--bg);color:var(--ink);border-color:var(--bg)}
-.paws{display:block;width:100%;margin-top:clamp(50px,8vh,90px);opacity:.5}
-.fineprint{border-top:1px solid rgba(233,238,220,.15);margin-top:0;padding:20px clamp(20px,4.5vw,48px);display:flex;gap:16px;flex-wrap:wrap;justify-content:space-between;font-family:var(--mono);font-size:11.5px;color:#8f9a7e;letter-spacing:.06em}
-
-@media (prefers-reduced-motion: reduce){
-  .slide,.swingA,.swingB,.trotA,.trotB,.bob,.tailwag,.earflop,.eye,.steam,.cloud,.rays,.birds,.track,.ast,
-  .lapClosed,.armBack,.armUp,.lapOpen,.lid,.scrUI,.scrBan,.toast,.flyLap,.note,.wmouth,.pflip{animation:none !important}
-  .play .slide{animation:none !important}
-  .woof{opacity:1}
-  .rv{opacity:1;transform:none;transition:none}
-  html{scroll-behavior:auto}
-}
-</style>
+<link rel="stylesheet" href="style.css">
+<script src="analytics.js"></script>
 
 <!-- ================= NAV ================= -->
 <header class="nav">
-  <a class="mark" href="#top">piotr<b>.</b></a>
+  <a class="mark" href="index.html">piotr<b>.</b></a>
   <nav>
-    <a href="#menu">menu</a>
-    <a href="#career">career</a>
-    <a href="#side">side projects</a>
-    <a href="#education">education</a>
-    <a href="#advisory">advisory</a>
+    <a href="career.html">career</a>
+    <a href="projects.html">projects</a>
+    <a href="education.html">education</a>
+    <a href="advisory.html">advisory</a>
     <a class="hej" href="https://www.linkedin.com/in/nowickipiotrr/" target="_blank" rel="noopener">say hey</a>
   </nav>
 </header>
@@ -515,12 +224,8 @@ a.pcard:hover{transform:translateY(-4px);box-shadow:0 14px 28px rgba(38,46,29,.1
 <!-- ================= BENTO MENU ================= -->
 <section class="menu" id="menu">
   <div class="wrap">
-    <p class="eyebrow rv">THE MENU</p>
-    <h2 class="h2 rv">Pick a door.</h2>
-    <p class="lede rv">Everything I do, behind seven rounded rectangles.</p>
-
     <div class="grid">
-      <a class="tile t-career rv" href="#career">
+      <a class="tile t-career rv" href="career.html">
         <span class="go">↗&#xFE0E;</span>
         <div class="art">
           <svg viewBox="0 0 320 110" width="320" height="110" aria-hidden="true">
@@ -539,7 +244,7 @@ a.pcard:hover{transform:translateY(-4px);box-shadow:0 14px 28px rgba(38,46,29,.1
         <p>First PM job to the C-suite. The full climb, potholes and all.</p>
       </a>
 
-      <a class="tile t-side rv" href="#side">
+      <a class="tile t-side rv" href="projects.html">
         <span class="go">↗&#xFE0E;</span>
         <div class="art icon-row" aria-hidden="true">
           <span class="app" style="background:#DFA75C">
@@ -560,7 +265,7 @@ a.pcard:hover{transform:translateY(-4px);box-shadow:0 14px 28px rgba(38,46,29,.1
         <p>Small products, built end-to-end. Lately Reality Check and a hardware display board.</p>
       </a>
 
-      <a class="tile t-edu rv" href="#education">
+      <a class="tile t-edu rv" href="education.html">
         <span class="go">↗&#xFE0E;</span>
         <div class="art" aria-hidden="true">
           <svg viewBox="0 0 90 60" width="90" height="60">
@@ -575,7 +280,7 @@ a.pcard:hover{transform:translateY(-4px);box-shadow:0 14px 28px rgba(38,46,29,.1
         <p>A hands-on product postgrad at Collegium Da Vinci. Build, don't just listen.</p>
       </a>
 
-      <a class="tile t-work rv" href="#advisory">
+      <a class="tile t-work rv" href="advisory.html">
         <span class="go">↗&#xFE0E;</span>
         <div class="art" style="display:flex;align-items:center;gap:18px" aria-hidden="true">
           <svg viewBox="0 0 170 60" width="150" height="53">
@@ -595,7 +300,7 @@ a.pcard:hover{transform:translateY(-4px);box-shadow:0 14px 28px rgba(38,46,29,.1
         <p>Strategy that stays for execution — or interim product leadership when it's on fire.</p>
       </a>
 
-      <a class="tile t-dogs rv" href="#life">
+      <a class="tile t-dogs rv" href="life.html">
         <span class="go">↗&#xFE0E;</span>
         <div class="art" style="color:#C1502E" aria-hidden="true">
           <svg viewBox="0 0 200 44" width="200" height="44">
@@ -641,222 +346,6 @@ a.pcard:hover{transform:translateY(-4px);box-shadow:0 14px 28px rgba(38,46,29,.1
   </div>
 </section>
 
-<!-- ================= CAREER ================= -->
-<section class="sect" id="career">
-  <div class="wrap">
-    <p class="eyebrow rv">01 · THE CAREER</p>
-    <h2 class="h2 rv">The road so far.</h2>
-    <p class="lede rv">Every step taught me a different altitude of the same job: make the thing people need, then make the org that makes the thing.</p>
-
-    <ol class="tl">
-      <li class="rv">
-        <span class="when">MAR 2024 — NOW</span>
-        <h3>Chief Product Officer <small>— Team Internet Group (Commerce Media Tech)</small></h3>
-        <p>Ad-tech SaaS: Voluum &amp; Zeropark. Cut 45 scattered initiatives down to 4 core rebuilds and 6 strategic bets, set the group's market positioning, and led its product and AI transformation — while still shipping experimental products myself, on principle.</p>
-      </li>
-      <li class="rv">
-        <span class="when">JAN 2023 — MAR 2024</span>
-        <h3>Head of Product Management <small>— same company, the fix-the-foundations chapter</small></h3>
-        <p>Turned feature factories into teams that own outcomes: product triads, a real user-research culture, separate strategies for both products. Time-to-value down 60%, team eNPS from 20 to 54 — and a promotion to CPO after 14 months.</p>
-      </li>
-      <li class="rv">
-        <span class="when">2023 — NOW</span>
-        <h3>Founder <small>— shoshin.pm</small></h3>
-        <p>Strategy consultancy run by practitioners who still practice. Workshops that end in decisions, then execution support — for Allegro, Betfan, Kuźniar Media, Valueships, Rohlig SUUS Logistics.</p>
-      </li>
-      <li class="rv">
-        <span class="when">JAN — AUG 2024</span>
-        <h3>Interim Head of Product <small>— Olly Olly, Charlotte NC (remote)</small></h3>
-        <p>The parachute gig: pivoted a marketing agency into a SaaS for US home-service pros. Shipped v1, got the first 1,000 paying customers, built the activation engine, handed over.</p>
-      </li>
-      <li class="rv">
-        <span class="when">JUL 2022 — JAN 2023</span>
-        <h3>Senior PM / Product Practice Lead <small>— Ramp Network, London</small></h3>
-        <p>Clarified the B2B2C Partners strategy into two product lines and shipped the Partners Portal from zero: retention up 12%, issue-resolution time cut ~5×. Led the product-practice transformation on the side.</p>
-      </li>
-      <li class="rv">
-        <span class="when">JUN 2021 — JUL 2022</span>
-        <h3>Product Manager <small>— Housecall Pro, San Diego</small></h3>
-        <p>Owned the calendar — where users spend 90% of their time. Built the area's 3-year strategy, cut lost jobs 6% for the key segment, and sold everyone on an engine rebuild with zero "immediate value" that unlocked everything after. First PM in Poland; hired 3 PMs and 2 designers.</p>
-      </li>
-      <li class="rv">
-        <span class="when">SEP 2020 — JUN 2021</span>
-        <h3>Product Manager <small>— Delivery Hero (via Netguru)</small></h3>
-        <p>Innovation arm of the world's biggest food delivery (2M daily users). White-label groceries engine built in a month, live in Talabat and Hungerstation in two, 20% of early restaurant customers converted to grocery delivery.</p>
-      </li>
-      <li class="rv">
-        <span class="when">MAR 2018 — SEP 2020</span>
-        <h3>Project / Product Manager <small>— Netguru</small></h3>
-        <p>Co-built Netguru's product management practice. Click &amp; collect for Żabka, a US insurtech, a Berlin catering app — alongside the future founder of Gorillas.</p>
-      </li>
-      <li class="rv">
-        <span class="when">ORIGIN STORY</span>
-        <h3>Production planner <small>— roller blinds, then tires</small></h3>
-        <p>Started in the warehouse, got moved to planning, then built an Excel macro that planned the entire production line for me — components, forecasts, output. That was the day I realised I don't want to plan products. I want to build them.</p>
-      </li>
-    </ol>
-    <p class="cv-note rv">→&#xFE0E; the long version, with every number sourced: <a href="mailto:piotr@shoshin.pm?subject=CV%20please">ask for it</a></p>
-  </div>
-</section>
-
-<!-- ================= SIDE PROJECTS ================= -->
-<section class="sect alt" id="side">
-  <div class="wrap">
-    <p class="eyebrow rv">02 · SIDE PROJECTS</p>
-    <h2 class="h2 rv">Things I ship before standup.</h2>
-    <p class="lede rv">Always an experiment or two running — lately deep in the Claude ecosystem, and lately in hardware too. A few current favourites:</p>
-
-    <div class="cards">
-      <a class="pcard rv" href="https://claude.ai/code/artifact/69fa0093-ac92-4d4e-8f80-9bb1aa9403aa" target="_blank" rel="noopener">
-        <span class="app" style="background:#C1502E">
-          <svg viewBox="0 0 24 24" width="30" height="30"><g fill="none" stroke="#F6F2E6" stroke-width="2"><circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4.2" ry="9"/><path d="M3 12h18"/></g></svg>
-        </span>
-        <h3>Domain search, inside Claude</h3>
-        <p>An MCP server that checks live domain availability right inside Claude and hands back one-click booking links — built zero-to-handoff in a single session for Team Internet.</p>
-        <span class="st">WORKING PROTOTYPE · READ THE CASE STUDY →&#xFE0E;</span>
-      </a>
-      <div class="pcard rv">
-        <span class="app" style="background:#DFA75C">
-          <svg viewBox="0 0 24 24" width="30" height="30"><polyline points="4,17 10,11 14,14 20,6" fill="none" stroke="#262E1D" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </span>
-        <h3>Reality Check</h3>
-        <p>Your calendar says you're free. Your nervous system disagrees. Reality Check shows how loaded the coming weekends actually are — so you know whether to answer the kayaking invite with "of course!" or "how about mid-July?"</p>
-        <span class="st">STATUS: SHIPPING · SAVING MY WEEKENDS</span>
-      </div>
-      <div class="pcard rv">
-        <span class="app" style="background:#262E1D">
-          <svg viewBox="0 0 24 24" width="30" height="30"><g fill="none" stroke="#EDAF1F" stroke-width="2"><rect x="3" y="4" width="18" height="13" rx="1.5"/><path d="M9 20 h6 M12 17 v3" stroke-linecap="round"/></g><circle cx="7" cy="8" r="1.3" fill="#EDAF1F"/><circle cx="7" cy="12.5" r="1.3" fill="#EDAF1F"/><path d="M10 8 h8 M10 12.5 h6" stroke="#C1502E" stroke-width="2" stroke-linecap="round"/></svg>
-        </span>
-        <h3>Hardware display board</h3>
-        <p>A physical build, for a change — a wall-mounted display board wired and coded from the screen up. Because not every product should live in a browser tab, and soldering is a nice break from roadmaps.</p>
-        <span class="st">STATUS: SOLDERING · PIXELS: ON THE WALL</span>
-      </div>
-    </div>
-    <p class="side-note rv">Way back, the origin story: I built websites and online shops for local businesses. Small gigs — but the first time I made something someone actually paid to use.</p>
-  </div>
-</section>
-
-<!-- ================= EDUCATION ================= -->
-<section class="sect" id="education">
-  <div class="wrap">
-    <p class="eyebrow rv">03 · EDUCATION</p>
-    <h2 class="h2 rv">I teach people to build products.</h2>
-    <p class="lede rv">Hands-on, not theory from someone who left the field. You leave having built.</p>
-
-    <div class="edu-grid">
-      <div>
-        <ul class="edu-list">
-          <li class="rv"><span class="dot">NEW</span><div><b>Postgrad — Building Digital Products</b><span>A hands-on program I'm building at Collegium Da Vinci: ship real products with AI. <a href="https://cdv.pl/podyplomowe/marketing-i-technologie/budowanie-produktow-cyfrowych/">See it →&#xFE0E;</a></span></div></li>
-          <li class="rv"><span class="dot">🎓</span><div><b>Lecturer · Collegium Da Vinci</b><span>Communication for remote teams, IT Project Management (2019–2022).</span></div></li>
-          <li class="rv"><span class="dot">W</span><div><b>Strategy workshops</b><span>Via shoshin.pm — the Strategy Stack method. More one door down.</span></div></li>
-        </ul>
-      </div>
-      <div class="board rv">
-        <p class="chalk">"Interesting lecture" is a failing grade.<br>"I actually <u>built</u> something" — that's a pass.</p>
-        <p class="sig">APPLICATIONS →&#xFE0E; <a href="https://cdv.pl/podyplomowe/marketing-i-technologie/budowanie-produktow-cyfrowych/" style="color:var(--mustard)">CDV.PL</a></p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= ADVISORY / INTERIM ================= -->
-<section class="sect alt" id="advisory">
-  <div class="wrap">
-    <p class="eyebrow rv">04 · WORK WITH ME</p>
-    <h2 class="h2 rv">Two ways in.</h2>
-    <p class="lede rv">Beyond the day job, there are exactly two doors — pick by how much is on fire.</p>
-
-    <div class="duo">
-      <div class="box a rv">
-        <span class="mode">WORKSHOPS + EXECUTION · SHOSHIN.PM</span>
-        <h3>Strategy, done with you</h3>
-        <p>A consultancy run by practitioners who still practice. We don't hand you a deck and leave — we run our own <b>Strategy Stack</b> method: facilitate your answer with your people, then stay to execute it.</p>
-        <ul>
-          <li><b>strategy scoping</b> — diagnose where you actually stand</li>
-          <li><b>strategy stack</b> — the core workshop: make the hard choices, together</li>
-          <li><b>execution</b> — we implement it with you, in practice</li>
-        </ul>
-        <p class="clients">ALLEGRO · BETFAN · KUŹNIAR MEDIA · VALUESHIPS · ROHLIG SUUS</p>
-        <p class="tagline">honest, allergic to slideware. <a href="https://www.shoshin.pm/">shoshin.pm →&#xFE0E;</a></p>
-      </div>
-      <div class="box b rv">
-        <span class="mode">EMBEDDED · FRACTIONAL / INTERIM</span>
-        <h3>Interim product lead</h3>
-        <p>Your Head of Product left, the roadmap is a rumour, and the board meeting is in three weeks. I parachute in.</p>
-        <ul>
-          <li>stabilise the team and the plan</li>
-          <li>restart discovery and shipping</li>
-          <li>hire my own replacement, hand over, leave</li>
-        </ul>
-        <p class="clients">DONE AT: OLLY OLLY (AGENCY →&#xFE0E; SAAS, FIRST 1,000 PAYING) · RAMP NETWORK</p>
-        <p class="tagline">call me when it's messy.</p>
-      </div>
-    </div>
-
-    <div class="beliefs-block rv">
-      <div class="belief-col">
-        <span class="belief-label">WHAT I BELIEVE IN</span>
-        <div class="tenets" aria-label="Strategy tenets">
-          <span>strategy is what you say no to</span>
-          <span>diagnosis before roadmap</span>
-          <span>a living process, not a document</span>
-          <span>focus is a value in itself</span>
-        </div>
-      </div>
-      <div class="belief-col">
-        <span class="belief-label">WHAT'S A NO-GO</span>
-        <ul class="nogo">
-          <li>roles where the strategy is fixed and I'm only there to execute</li>
-          <li>slides-and-leave consulting</li>
-          <li>organisations that don't want to be challenged</li>
-          <li>micromanagement cultures</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= TESTIMONIALS ================= -->
-<section class="sect" id="words">
-  <div class="wrap">
-    <p class="eyebrow rv">05 · SECOND OPINIONS</p>
-    <h2 class="h2 rv">Don't take my word for it.</h2>
-
-    <div class="quotes">
-      <figure class="qcard rv">
-        <p>"A very down-to-earth CPO. What truly sets Piotr apart is his ability to balance high-level vision with pragmatic execution — empowering individuals to take ownership, always ready to support without micromanaging."</p>
-        <figcaption class="who">REUBEN — PRODUCT MANAGER,<br>REPORTED TO PIOTR AT COMMERCE MEDIA TECH</figcaption>
-      </figure>
-      <figure class="qcard rv">
-        <p>"I like their style — organised, professional, assertive, sharing knowledge in a way that's light but effective. They work a bit like therapists you resent for only asking questions. But asking is a craft."</p>
-        <figcaption class="who">JAROSŁAW KUŹNIAR — JOURNALIST, FOUNDER OF VOICE HOUSE,<br>ON WORKING WITH SHOSHIN.PM (TRANSLATED)</figcaption>
-      </figure>
-      <figure class="qcard rv">
-        <p>"An astute product manager with an indisputable talent for setting his team up for success. He never shied away from reaching out to users through every channel he could find — and is never afraid to question the status quo."</p>
-        <figcaption class="who">PRODUCT DESIGNER — SQUAD-MATE<br>AT HOUSECALL PRO</figcaption>
-      </figure>
-    </div>
-  </div>
-</section>
-
-<!-- ================= OFF THE CLOCK ================= -->
-<section class="sect alt" id="life">
-  <div class="wrap">
-    <p class="eyebrow rv">06 · OFF THE CLOCK</p>
-    <h2 class="h2 rv">Life outside the roadmap.</h2>
-    <p class="lede rv">Usually I'm the loudest, most smiling person in the room. I try to live the way I like to build — high energy, low ego, always mid-project.</p>
-    <div class="life-grid">
-      <div class="life-card rv"><span class="li-ic">🐾</span><b>The family</b><span>My wife, a golden retriever, a cocker spaniel and one gloriously unbothered cat. Half my best thinking happens on a walk with them.</span></div>
-      <div class="life-card rv"><span class="li-ic">🏋️</span><b>CrossFit &amp; real food</b><span>Moving a lot and eating well matter to me more than they probably should — it's where the energy comes from.</span></div>
-      <div class="life-card rv"><span class="li-ic">☕</span><b>Specialty coffee</b><span>Quietly obsessed. Ask me about the beans and clear your afternoon.</span></div>
-      <div class="life-card rv"><span class="li-ic">🪵</span><b>Woodworking</b><span>Amateur furniture-maker. Something grounding about building a real, physical thing with your hands.</span></div>
-      <div class="life-card rv"><span class="li-ic">✈️</span><b>Travel</b><span>Favourite trip ever: Australia — surf, ocean, and people living in genuine harmony with nature; kind, and refreshingly unshowy.</span></div>
-      <div class="life-card rv"><span class="li-ic">🧠</span><b>Always learning</b><span>Cooking, AI, whatever's next — I can't sit still. Reality Check exists because I have too many hobbies to safely schedule.</span></div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= FOOTER ================= -->
 <footer class="footer" id="hej">
   <div class="wrap">
     <p class="eyebrow rv" style="color:var(--mustard)">SAY HEY</p>
@@ -885,36 +374,4 @@ a.pcard:hover{transform:translateY(-4px);box-shadow:0 14px 28px rgba(38,46,29,.1
   </div>
 </footer>
 
-<script>
-/* replay the hero walk-on whenever it scrolls into view */
-(function(){
-  const hero = document.querySelector('.hero');
-  if(!('IntersectionObserver' in window)) return; /* no IO: .play stays from markup */
-  hero.classList.remove('play');
-  new IntersectionObserver(function(es){
-    es.forEach(function(e){ hero.classList.toggle('play', e.isIntersecting); });
-  }, {threshold:.25}).observe(hero);
-})();
-
-/* reveal-on-scroll — with fail-safes so content can never stay hidden */
-(function(){
-  const els = document.querySelectorAll('.rv');
-  function showAll(){ els.forEach(function(el){ el.classList.add('in'); }); }
-  if(!('IntersectionObserver' in window)
-     || matchMedia('(prefers-reduced-motion: reduce)').matches
-     || document.hidden){ showAll(); return; }
-  let fired = false;
-  const io = new IntersectionObserver(function(es){
-    fired = true;
-    es.forEach(function(e){
-      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
-    });
-  }, {threshold:.12, rootMargin:'0px 0px -40px 0px'});
-  els.forEach(function(el, i){
-    el.style.transitionDelay = (i % 4) * 70 + 'ms';
-    io.observe(el);
-  });
-  /* if rendering is throttled and the observer never delivers, reveal everything */
-  setTimeout(function(){ if(!fired) showAll(); }, 4000);
-})();
-</script>
+<script src="main.js"></script>
