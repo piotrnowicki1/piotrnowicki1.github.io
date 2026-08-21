@@ -237,10 +237,14 @@ a.pcard:hover{transform:translateY(-4px);box-shadow:0 14px 28px rgba(38,46,29,.1
 .duo .b ul{color:#5c4708}
 .duo .tagline{margin-top:auto;padding-top:16px;font-family:"Chalkboard SE","Bradley Hand","Comic Sans MS",cursive;font-size:1.05rem}
 .duo .clients{margin-top:8px;font-family:var(--mono);font-size:10px;letter-spacing:.1em;color:#8A5B2B;line-height:1.7}
-.tenets{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px}
+.tenets{display:flex;gap:10px;flex-wrap:wrap}
 .tenets span{font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;border:1.5px solid rgba(38,46,29,.3);border-radius:999px;padding:8px 15px;color:var(--ink-soft)}
-.nos{margin-top:30px;font-family:var(--mono);font-size:12px;line-height:1.9;color:var(--ink-soft);max-width:62em}
-.nos b{color:var(--rust);letter-spacing:.12em}
+.beliefs-block{margin-top:36px;padding-top:30px;border-top:1px solid rgba(38,46,29,.15);display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,52px)}
+.belief-label{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:var(--rust);margin-bottom:16px}
+.nogo{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:9px;font-size:.96rem;color:var(--ink-soft)}
+.nogo li{position:relative;padding-left:24px}
+.nogo li::before{content:"✕";position:absolute;left:0;top:.05em;color:var(--rust);font-weight:700}
+@media(max-width:760px){.beliefs-block{grid-template-columns:1fr;gap:28px}}
 @media(max-width:860px){.duo{grid-template-columns:1fr}}
 
 /* testimonials */
@@ -750,13 +754,7 @@ a.pcard:hover{transform:translateY(-4px);box-shadow:0 14px 28px rgba(38,46,29,.1
   <div class="wrap">
     <p class="eyebrow rv">04 · WORK WITH ME</p>
     <h2 class="h2 rv">Two ways in.</h2>
-    <p class="lede rv">Beyond the day job, there are exactly two doors — pick by how much is on fire. Either way, the same beliefs apply:</p>
-    <div class="tenets rv" aria-label="Strategy tenets">
-      <span>strategy is what you say no to</span>
-      <span>diagnosis before roadmap</span>
-      <span>a living process, not a document</span>
-      <span>focus is a value in itself</span>
-    </div>
+    <p class="lede rv">Beyond the day job, there are exactly two doors — pick by how much is on fire.</p>
 
     <div class="duo">
       <div class="box a rv">
@@ -785,7 +783,26 @@ a.pcard:hover{transform:translateY(-4px);box-shadow:0 14px 28px rgba(38,46,29,.1
       </div>
     </div>
 
-    <p class="nos rv"><b>THE CONSCIOUS NO'S →&#xFE0E;</b> no roles where the strategy is fixed and I'm just there to execute · no slides-and-leave consulting · no organisations that don't want to be challenged · no micromanagement cultures</p>
+    <div class="beliefs-block rv">
+      <div class="belief-col">
+        <span class="belief-label">WHAT I BELIEVE IN</span>
+        <div class="tenets" aria-label="Strategy tenets">
+          <span>strategy is what you say no to</span>
+          <span>diagnosis before roadmap</span>
+          <span>a living process, not a document</span>
+          <span>focus is a value in itself</span>
+        </div>
+      </div>
+      <div class="belief-col">
+        <span class="belief-label">WHAT'S A NO-GO</span>
+        <ul class="nogo">
+          <li>roles where the strategy is fixed and I'm only there to execute</li>
+          <li>slides-and-leave consulting</li>
+          <li>organisations that don't want to be challenged</li>
+          <li>micromanagement cultures</li>
+        </ul>
+      </div>
+    </div>
   </div>
 </section>
 
