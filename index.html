@@ -200,7 +200,8 @@ section{scroll-margin-top:92px}
 
 /* side projects */
 .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:40px}
-.pcard{background:var(--bg);border:1px solid rgba(38,46,29,.1);border-radius:24px;padding:24px;display:flex;flex-direction:column;gap:10px}
+.pcard{background:var(--bg);border:1px solid rgba(38,46,29,.1);border-radius:24px;padding:24px;display:flex;flex-direction:column;gap:10px;text-decoration:none;transition:transform .2s,box-shadow .2s}
+a.pcard:hover{transform:translateY(-4px);box-shadow:0 14px 28px rgba(38,46,29,.12)}
 .pcard .app{width:58px;height:58px;border-radius:15px;display:grid;place-items:center;box-shadow:inset 0 -3px 0 rgba(0,0,0,.14)}
 .pcard h3{font-family:var(--round);font-weight:400;font-size:1.25rem;margin:6px 0 0}
 .pcard p{margin:0;font-size:.93rem;color:var(--ink-soft)}
@@ -689,9 +690,17 @@ section{scroll-margin-top:92px}
   <div class="wrap">
     <p class="eyebrow rv">02 · SIDE PROJECTS</p>
     <h2 class="h2 rv">Things I ship before standup.</h2>
-    <p class="lede rv">Always an experiment or two running — lately deep in the Claude ecosystem, and lately in hardware too. Two current favourites:</p>
+    <p class="lede rv">Always an experiment or two running — lately deep in the Claude ecosystem, and lately in hardware too. A few current favourites:</p>
 
-    <div class="cards two">
+    <div class="cards">
+      <a class="pcard rv" href="https://claude.ai/code/artifact/69fa0093-ac92-4d4e-8f80-9bb1aa9403aa" target="_blank" rel="noopener">
+        <span class="app" style="background:#C1502E">
+          <svg viewBox="0 0 24 24" width="30" height="30"><g fill="none" stroke="#F6F2E6" stroke-width="2"><circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4.2" ry="9"/><path d="M3 12h18"/></g></svg>
+        </span>
+        <h3>Domain search, inside Claude</h3>
+        <p>An MCP server that checks live domain availability right inside Claude and hands back one-click booking links — built zero-to-handoff in a single session for Team Internet.</p>
+        <span class="st">WORKING PROTOTYPE · READ THE CASE STUDY →&#xFE0E;</span>
+      </a>
       <div class="pcard rv">
         <span class="app" style="background:#DFA75C">
           <svg viewBox="0 0 24 24" width="30" height="30"><polyline points="4,17 10,11 14,14 20,6" fill="none" stroke="#262E1D" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
